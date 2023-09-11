@@ -1,0 +1,35 @@
+{
+	"name": "youbike-display",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"lint": "eslint --fix --ext .js,.vue .",
+		"build": "vite build",
+		"preview": "vite preview",
+		"deploy": "vite build && firebase deploy"
+	},
+	"dependencies": {
+		"axios": "^1.4.0",
+		"i18n": "^0.15.1",
+		"mapbox-gl": "^2.15.0",
+		"pinia": "^2.1.6",
+		"threebox-plugin": "^2.2.7",
+		"vue": "^3.3.4",
+		"vue-i18n": "^9.3.0",
+		"vue-router": "^4.2.4"
+	},
+	"devDependencies": {
+		"@vitejs/plugin-vue": "^4.2.3",
+		"eslint-plugin-vue": "^9.17.0",
+		"sass": "^1.66.1",
+		"vite": "^4.4.5"
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions",
+		"not dead",
+		"not ie 11"
+	]
+}
