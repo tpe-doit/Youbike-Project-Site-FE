@@ -21,23 +21,18 @@
 	margin: 0;
 	padding: 0;
 	color: var(--color-normal-text);
-	font-family: "微軟正黑體", "Microsoft JhengHei", "Droid Sans", "Open Sans",
-		"Helvetica";
-}
-
-body,
-#app {
-	width: 100%;
-	height: 100vh;
+	font-family: "Noto Serif TC", serif;
 }
 
 h1 {
-	font-size: var(--font-l);
+	font-size: var(--font-xl);
 }
 h2 {
+	font-size: var(--font-l);
+}
+h3 {
 	font-size: var(--font-m);
 }
-h3,
 p {
 	font-size: var(--font-s);
 }
@@ -47,16 +42,18 @@ a {
 }
 
 button {
+	cursor: pointer;
 	border: none;
 	background-color: transparent;
-	transition: opacity 0.2s;
+	transition: text-shadow 0.2s, box-shadow 0.2s, opacity 0.2s,
+		background-color 0.2s;
 }
 button span {
 	font-family: var(--font-icon);
 }
-button:hover {
+button span:hover {
 	cursor: pointer;
-	opacity: 0.8;
+	text-shadow: var(--color-border) 0px 0px 6px;
 }
 
 input {

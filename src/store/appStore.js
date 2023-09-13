@@ -4,12 +4,13 @@ export const useAppStore = defineStore("app", {
 	state: () => ({
 		lang: localStorage.getItem("lang") || "ch",
 		isMobileDevice: false,
+		introVideoPage: true,
 	}),
 	getters: {},
 	actions: {
 		toggleLang(lang) {
 			this.lang = lang;
-			localStorage.setItem("lang", lang);
+			localStorage.setItem("lang", this.lang);
 			document.title =
 				this.lang === "en"
 					? "YouBike Optimization Analysis"
@@ -22,6 +23,9 @@ export const useAppStore = defineStore("app", {
 			if (window.matchMedia("(pointer:fine)").matches) {
 				this.isMobileDevice = false;
 			}
+		},
+		closeIntroVideoPage() {
+			this.introVideoPage = false;
 		},
 	},
 });

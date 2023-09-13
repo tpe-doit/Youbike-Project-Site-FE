@@ -10,6 +10,7 @@ export const MapObjectConfig = {
 	zoom: 12.5,
 	minZoom: 11,
 	maxZoom: 22,
+	interactive: false,
 	projection: "globe", // display the map as a 3D globe
 };
 
