@@ -53,11 +53,13 @@ function toggleVideoPlayback() {
 
 <style scoped lang="scss">
 .headerbar {
+	position: relative;
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
 	padding-top: var(--font-m);
 	padding-right: var(--font-m);
+	z-index: 10;
 
 	button {
 		height: 1.6rem;

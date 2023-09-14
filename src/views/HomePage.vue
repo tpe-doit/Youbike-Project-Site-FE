@@ -15,27 +15,27 @@ const appStore = useAppStore();
 		<IntroductionVideo v-if="appStore.introVideoPage" />
 		<div class="homepage" v-else>
 			<HeaderBar :is-home="true" />
-			<div class="homepage-container-desc">
-				<div class="homepage-container">
+			<div class="homepage-container">
+				<div class="homepage-container-desc">
 					<div>
-						<h2>{{ t('homepage.title') }}</h2>
+						<h1>{{ t('homepage.title') }}</h1>
 						<p>{{ t('homepage.content') }}</p>
 					</div>
-					<div><button>{{ t('homepage.dataset') }}</button><button>{{ t('homepage.explore') }}</button></div>
+					<div class="links"><a>{{ t('homepage.dataset') }}</a><a>{{ t('homepage.explore') }}</a></div>
 				</div>
 				<div class="homepage-container-directory">
-					<div>
+					<RouterLink class="management" to="/track/management">
 						<h2>{{ t('homepage.management') }}</h2>
 						<p>{{ t('homepage.managementdesc') }}</p>
-					</div>
-					<div>
+					</RouterLink>
+					<RouterLink class="weekday" to="/track/weekday">
 						<h2>{{ t('homepage.weekday') }}</h2>
 						<p>{{ t('homepage.weekdaydesc') }}</p>
-					</div>
-					<div>
+					</RouterLink>
+					<RouterLink class="weekend" to="/track/weekend">
 						<h2>{{ t('homepage.weekend') }}</h2>
 						<p>{{ t('homepage.weekenddesc') }}</p>
-					</div>
+					</RouterLink>
 				</div>
 			</div>
 		</div>
@@ -44,13 +44,111 @@ const appStore = useAppStore();
 
 <style scoped lang="scss">
 .homepage {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	height: calc(var(--vh) * 100);
-	display: grid;
-	grid-template-rows: 42px 1fr;
+
+	&-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		height: calc(var(--vh) * 100);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		&-desc {
+			width: 350px;
+			margin-right: max(5%, 2rem);
+
+			p {
+				margin: 1rem 0 2rem;
+				text-align: justify;
+				font-size: var(--font-m);
+			}
+
+			a {
+				cursor: pointer;
+				margin-right: 0.5rem;
+				padding: 0.25rem 0.75rem;
+				background-color: white;
+				border-radius: 10px;
+				color: black;
+				font-weight: 700;
+				font-size: var(--font-l);
+				transition: background-color 0.2s;
+
+				&:hover {
+					background-color: rgb(210, 210, 210);
+				}
+			}
+		}
+
+		&-directory {
+			display: grid;
+			grid-template-columns: 175px 175px;
+			grid-template-areas: "management weekday" "management weekend";
+			column-gap: 1rem;
+			row-gap: 1rem;
+			height: 350px;
+
+			a {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: flex-end;
+				border-radius: 10px;
+				background-position: center;
+				background-size: cover;
+				transition: box-shadow 0.3s;
+
+				p {
+					margin-bottom: 1rem;
+				}
+
+				&:hover {
+					cursor: pointer;
+					box-shadow: white 0 0 8px;
+				}
+			}
+
+			.management {
+				grid-area: management;
+				background-image: url('../assets/images/homepage/management.jpg');
+			}
+
+			.weekday {
+				grid-area: weekday;
+				background-image: url('../assets/images/homepage/weekday.jpg');
+			}
+
+			.weekend {
+				grid-area: weekend;
+				background-image: url('../assets/images/homepage/weekend.jpg');
+			}
+		}
+
+		@media screen and (max-width: 810px) {
+			flex-direction: column;
+
+			&-desc {
+				width: 366px;
+				margin-right: 0;
+				margin-bottom: 2rem;
+			}
+		}
+
+		@media screen and (max-width: 500px) {
+			flex-direction: column;
+
+			&-desc {
+				width: 316px;
+			}
+
+			&-directory {
+				grid-template-columns: 150px 150px;
+				height: 300px;
+			}
+		}
+	}
 }
 </style>

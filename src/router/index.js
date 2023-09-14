@@ -13,6 +13,11 @@ const routes = [
 		component: HomePage,
 	},
 	{
+		path: "/track/:trackindex",
+		name: "trackBackup",
+		component: TrackPage,
+	},
+	{
 		path: "/track/:trackindex/:pageindex",
 		name: "track",
 		component: TrackPage,
@@ -34,12 +39,19 @@ router.beforeEach((to) => {
 	const contentStore = useContentStore();
 	const appStore = useAppStore();
 
-	if ((to.name = "track" && to.params.trackindex && to.params.pageindex)) {
+	if ((to.name = "track" && to.params.trackindex)) {
 		contentStore.updateTrackPage(to.params.trackindex, to.params.pageindex);
 		appStore.closeIntroVideoPage();
+		if (
+			!["management", "weekday", "weekend"].includes(to.params.trackindex)
+		) {
+			router.replace("/");
+			contentStore.updateTrackPage(null, null);
+			return;
+		}
 		return;
 	}
-	contentStore.updateTrackPage(null, 0);
+	contentStore.updateTrackPage(null, null);
 });
 
 export default router;
