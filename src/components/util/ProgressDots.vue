@@ -8,17 +8,19 @@ const contentStore = useContentStore();
 	<div class="contentdots">
 		<RouterLink v-for="(dot, index) in contentStore.currentTrackIndexes"
 			:class="{ current: index === contentStore.currentPageIndex }" :key="`${contentStore.currentTrack}-${dot}-dot`"
-			:to="`/track/${contentStore.currentTrack}/${dot}`">
+			:to="`/track/${contentStore.currentTrack}/${dot}`" @click="contentStore.toggleContentMapMode('content')">
 		</RouterLink>
 	</div>
 </template>
 
 <style scoped lang="scss">
 .contentdots {
+	position: relative;
 	height: fit-content;
 	display: flex;
 	flex-direction: column;
 	margin: 0 1rem;
+	z-index: 2;
 
 	a {
 		width: 0.5rem;

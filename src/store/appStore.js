@@ -4,6 +4,7 @@ export const useAppStore = defineStore("app", {
 	state: () => ({
 		lang: localStorage.getItem("lang") || "ch",
 		isMobileDevice: false,
+		isNarrowDevice: false,
 		introVideoPage: true,
 	}),
 	getters: {},

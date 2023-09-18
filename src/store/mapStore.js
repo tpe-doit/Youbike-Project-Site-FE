@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import mapboxGl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import axios from "axios";
 
 import mapStyle from "../assets/mapConfigs/mapStyle.js";
 import {
@@ -8,6 +9,8 @@ import {
 	TaipeiTown,
 	TaipeiVillage,
 	TaipeiBuilding,
+	maplayerCommonPaint,
+	maplayerCommonLayout,
 } from "../assets/mapConfigs/mapConfig.js";
 // import { Threebox } from "threebox-plugin";
 
@@ -17,6 +20,8 @@ export const useMapStore = defineStore("map", {
 	state: () => ({
 		// Stores the mapbox map instance
 		map: null,
+		currentLayers: [],
+		currentMap: 0,
 	}),
 	getters: {},
 	actions: {
@@ -79,6 +84,104 @@ export const useMapStore = defineStore("map", {
 				})
 				.addLayer(TaipeiBuilding);
 		},
+		/* Adding Map Layers */
+		// 1.
+		fetchLocalGeoJson(mapConfig, pageIndex, mapControls) {
+			mapConfig.forEach((element, index) => {
+				let mapLayerId = `${pageIndex}-${index + 1}`;
+				axios
+					.get(`${BASE_URL}/maps/${mapLayerId}.geojson`)
+					.then((rs) => {
+						this.addMapLayerSource(
+							element,
+							mapLayerId,
+							rs.data,
+							mapControls
+						);
+					})
+					.catch((e) => console.error(e));
+			});
+		},
+		// 2.
+		addMapLayerSource(mapConfig, mapLayerId, data, mapControls) {
+			this.map.addSource(mapLayerId, {
+				type: "geojson",
+				data: data,
+			});
+			this.addMapLayer(mapConfig, mapLayerId, mapControls);
+		},
+		// 3.
+		addMapLayer(mapConfig, mapLayerId, mapControls) {
+			let extra_paint_configs = {};
+			let extra_layout_configs = {};
+			if (mapConfig.icon) {
+				extra_paint_configs = {
+					...maplayerCommonPaint[
+						`${mapConfig.type}-${mapConfig.icon}`
+					],
+				};
+				extra_layout_configs = {
+					...maplayerCommonLayout[
+						`${mapConfig.type}-${mapConfig.icon}`
+					],
+				};
+			}
+			if (mapConfig.size) {
+				extra_paint_configs = {
+					...extra_paint_configs,
+					...maplayerCommonPaint[
+						`${mapConfig.type}-${mapConfig.size}`
+					],
+				};
+				extra_layout_configs = {
+					...extra_layout_configs,
+					...maplayerCommonLayout[
+						`${mapConfig.type}-${mapConfig.size}`
+					],
+				};
+			}
+			this.map.addLayer({
+				id: mapLayerId,
+				type: mapConfig.type,
+				paint: {
+					...maplayerCommonPaint[`${mapConfig.type}`],
+					...extra_paint_configs,
+					...mapConfig.paint,
+				},
+				layout: {
+					...maplayerCommonLayout[`${mapConfig.type}`],
+					...extra_layout_configs,
+				},
+				source: mapLayerId,
+			});
+			this.currentLayers.push(mapLayerId);
+			this.currentMap = 0;
+
+			if (!mapControls[0].layers.includes(+mapLayerId.slice(-1))) {
+				this.map.setLayoutProperty(mapLayerId, "visibility", "none");
+			}
+		},
+		switchMap(mapIndex, mapControls, index) {
+			if (mapIndex === this.currentMap) return;
+
+			mapControls[this.currentMap].layers.forEach((el) => {
+				this.map.setLayoutProperty(
+					`${index}-${el}`,
+					"visibility",
+					"none"
+				);
+			});
+
+			mapControls[mapIndex].layers.forEach((el) => {
+				this.map.setLayoutProperty(
+					`${index}-${el}`,
+					"visibility",
+					"visible"
+				);
+			});
+
+			this.currentMap = mapIndex;
+		},
 		initialize3dLayer() {
 			// const tb = (window.tb = new Threebox(
 			// 	this.map,
@@ -110,14 +213,33 @@ export const useMapStore = defineStore("map", {
 			// 	});
 			// });
 		},
-		easeToLocation() {
-			// this.map.easeTo({
-			// 	center: ,
-			// 	zoom: ,
-			// 	duration: ,
-			// 	pitch: ,
-			// 	bearing:
-			// });
+		easeToLocation(center) {
+			if (center === "default") {
+				this.map.easeTo({
+					center: [121.536609, 25.044808],
+					zoom: 12.5,
+					duration: 3000,
+					pitch: 0,
+					bearing: 0,
+				});
+				return;
+			}
+
+			this.map.easeTo({
+				center: center.center,
+				zoom: center.zoom,
+				duration: center.duration,
+				pitch: center.pitch,
+				bearing: center.bearing,
+			});
+		},
+		clearMap() {
+			if (this.currentLayers.length === 0) return;
+			this.currentLayers.forEach((element) => {
+				this.map.removeLayer(element);
+				this.map.removeSource(element);
+			});
+			this.currentLayers.splice(0, this.currentLayers.length);
 		},
 	},
 });

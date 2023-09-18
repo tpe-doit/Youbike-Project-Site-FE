@@ -6,21 +6,43 @@ import { RouterView } from 'vue-router';
 import { useMapStore } from './store/mapStore';
 import { useAppStore } from './store/appStore';
 import AnimationWrapper from './components/util/AnimationWrapper.vue';
+import { useContentStore } from './store/contentStore';
 
 const { locale } = useI18n();
 
 const mapStore = useMapStore();
 const appStore = useAppStore();
+const contentStore = useContentStore();
 
 onBeforeMount(() => {
 	appStore.checkIfMobile();
 
 	let vh = window.innerHeight * 0.01;
+	let vw = window.innerWidth;
+
 	document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+	if (vw < 760) {
+		contentStore.mapMode = false;
+		contentStore.contentMode = true;
+		appStore.isNarrowDevice = true;
+	}
 
 	window.addEventListener('resize', () => {
 		let vh = window.innerHeight * 0.01;
+		let vw = window.innerWidth;
+
 		document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+		if (vw < 760) {
+			contentStore.mapMode = false;
+			contentStore.contentMode = true;
+			appStore.isNarrowDevice = true;
+		} else {
+			contentStore.mapMode = true;
+			contentStore.contentMode = true;
+			appStore.isNarrowDevice = false;
+		}
 	});
 });
 onMounted(() => {

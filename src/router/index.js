@@ -40,15 +40,15 @@ router.beforeEach((to) => {
 	const appStore = useAppStore();
 
 	if ((to.name = "track" && to.params.trackindex)) {
-		contentStore.updateTrackPage(to.params.trackindex, to.params.pageindex);
 		appStore.closeIntroVideoPage();
-		if (
-			!["management", "weekday", "weekend"].includes(to.params.trackindex)
-		) {
+		const tracks = ["management", "weekday", "weekend"];
+
+		if (!tracks.includes(to.params.trackindex)) {
 			router.replace("/");
 			contentStore.updateTrackPage(null, null);
 			return;
 		}
+		contentStore.updateTrackPage(to.params.trackindex, to.params.pageindex);
 		return;
 	}
 	contentStore.updateTrackPage(null, null);

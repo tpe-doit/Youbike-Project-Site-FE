@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useAppStore } from '../store/appStore';
+import { useMapStore } from '../store/mapStore';
 
 defineProps({
 	isVideo: {
@@ -19,6 +20,7 @@ const router = useRouter();
 const { t, locale } = useI18n();
 
 const appStore = useAppStore();
+const mapStore = useMapStore();
 
 const isPlaying = ref(true);
 
@@ -39,6 +41,11 @@ function toggleVideoPlayback() {
 		videoplayer.pause();
 	}
 }
+
+function returnToHome() {
+	mapStore.easeToLocation('default');
+	router.push('/');
+}
 </script>
 
 <template>
@@ -46,7 +53,7 @@ function toggleVideoPlayback() {
 		<button v-if="isVideo" @click="toggleVideoPlayback"><span :class="{ black: isVideo }">{{ isPlaying ?
 			'pause_circle_filled' :
 			'play_circle_filled' }}</span></button>
-		<button v-if="!isHome && !isVideo" @click="router.push('/')"><span :class="{ black: isVideo }">home</span></button>
+		<button v-if="!isHome && !isVideo" @click="returnToHome"><span :class="{ black: isVideo }">home</span></button>
 		<button :class="{ 'headerbar-lang': true, black: isVideo }" @click="toggleLang">{{ t('oppositeLanguage') }}</button>
 	</div>
 </template>

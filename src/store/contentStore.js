@@ -1,6 +1,8 @@
 import { defineStore } from "pinia";
 import router from "../router/index";
 import { allTracks } from "../assets/mapConfigs/allTracks";
+import { useMapStore } from "./mapStore";
+import { useAppStore } from "./appStore";
 
 export const useContentStore = defineStore("content", {
 	state: () => ({
@@ -8,10 +10,17 @@ export const useContentStore = defineStore("content", {
 		currentTrackIndexes: [],
 		currentPage: null,
 		currentPageIndex: null,
+		contentMode: true,
+		mapMode: true,
 	}),
 	getters: {},
 	actions: {
 		updateTrackPage(track, page) {
+			const mapStore = useMapStore();
+			const appStore = useAppStore();
+
+			mapStore.clearMap();
+
 			this.currentTrack = track;
 			this.currentPage = page;
 
@@ -40,6 +49,40 @@ export const useContentStore = defineStore("content", {
 			this.currentPageIndex = this.currentTrackIndexes.indexOf(
 				this.currentPage
 			);
+
+			const currentPageConfig =
+				allTracks[this.currentTrack][this.currentPageIndex];
+
+			if (
+				appStore.isNarrowDevice &&
+				currentPageConfig.mapConfig.mobileCenter
+			) {
+				mapStore.easeToLocation(
+					currentPageConfig.mapConfig.mobileCenter
+				);
+			} else {
+				mapStore.easeToLocation(currentPageConfig.mapConfig.center);
+			}
+
+			if (currentPageConfig.mapConfig.layers) {
+				mapStore.fetchLocalGeoJson(
+					currentPageConfig.mapConfig.layers,
+					currentPageConfig.index,
+					currentPageConfig.mapControls
+				);
+			}
+		},
+		toggleContentMapMode(mode) {
+			if (this.contentMode && this.mapMode) return;
+
+			if (mode === "content") {
+				this.contentMode = true;
+				this.mapMode = false;
+				return;
+			}
+
+			this.contentMode = this.contentMode ? false : true;
+			this.mapMode = this.mapMode ? false : true;
 		},
 	},
 });
