@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "vite",
 		"lint": "eslint --fix --ext .js,.vue .",
-		"build": "vite build",
+		"build": "eslint --fix --ext .js,.vue . && vite build",
 		"preview": "vite preview",
 		"deploy": "vite build && firebase deploy"
 	},
@@ -15,6 +15,7 @@
 		"i18n": "^0.15.1",
 		"mapbox-gl": "^2.15.0",
 		"pinia": "^2.1.6",
+		"three.js": "^0.77.1",
 		"threebox-plugin": "^2.2.7",
 		"vue": "^3.3.4",
 		"vue-i18n": "^9.3.0",

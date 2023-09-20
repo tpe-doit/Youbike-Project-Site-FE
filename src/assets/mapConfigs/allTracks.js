@@ -1,3 +1,4 @@
+/* eslint-disable no-loss-of-precision */
 export const allTracks = {
 	management: [
 		{
@@ -268,6 +269,7 @@ export const allTracks = {
 		},
 		{
 			index: "alternative-stations",
+			caption: true,
 			mapConfig: {
 				layers: [
 					{
@@ -325,38 +327,190 @@ export const allTracks = {
 			],
 		},
 		{
-			index: "management-mid",
-			threed: false,
+			index: "village-helper",
 			mapConfig: { center: "default" },
-			mapControls: false,
-			multipleChoice: true,
-			images: false,
+			images: true,
 		},
 		{
-			index: "management-end",
-			threed: false,
-			mapConfig: { center: "default" },
-			mapControls: false,
-			multipleChoice: false,
-			images: false,
+			index: "station-expansion",
+			caption: true,
+			mapConfig: {
+				layers: [
+					{
+						type: "fill",
+						paint: {
+							"fill-color": [
+								"case",
+								["==", ["get", "class"], 1],
+								"#40A461",
+								["==", ["get", "class"], 2],
+								"#7FBF7B",
+								["==", ["get", "class"], 3],
+								"#ACCFFF",
+								["==", ["get", "class"], 4],
+								"#BEBEBE",
+								["==", ["get", "class"], 5],
+								"#BFDAB8",
+								["==", ["get", "class"], 6],
+								"#3D56FF",
+								"#8E8E8E",
+							],
+							"fill-opacity": 0.5,
+							"fill-outline-color": "#555555",
+						},
+					},
+				],
+				center: {
+					center: [121.52586280418996, 25.080435559940524],
+					zoom: 11.753671549231125,
+					duration: 3000,
+					pitch: 0,
+					bearing: 0,
+				},
+				mobileCenter: {
+					center: [121.55586280418996, 25.040435559940524],
+					zoom: 10.6,
+					duration: 3000,
+					pitch: 30,
+					bearing: -10,
+				},
+			},
+			mapControls: [
+				{
+					layers: [1],
+					legend: [
+						["fill", "#3D56FF"],
+						["fill", "#40A461"],
+						["fill", "#7FBF7B"],
+						["fill", "#ACCFFF"],
+						["fill", "#BEBEBE"],
+						["fill", "#BFDAB8"],
+						["fill", "#8E8E8E"],
+					],
+				},
+			],
 		},
+		{
+			index: "green-future",
+			mapConfig: {
+				center: "default",
+				layers: [{ type: "symbol", icon: "youbike" }],
+			},
+			mapControls: [{ layers: [1], legend: [["symbol", "bike_green"]] }],
+		},
+		{ index: "credits", mapConfig: { center: "default" } },
 	],
 	weekday: [
 		{
-			index: "management-start",
-			threed: false,
-			mapConfig: false,
-			mapControls: false,
-			images: false,
+			index: "commute-path",
+			mapConfig: {
+				layers: [
+					{
+						type: "arc",
+						paint: {
+							color: ["#fd7900", "#47d3d9"],
+						},
+					},
+					{
+						type: "circle",
+						paint: {
+							"circle-color": "white",
+						},
+					},
+				],
+				center: {
+					center: [121.536609, 25.044808000000003],
+					zoom: 12.5,
+					duration: 4000,
+					pitch: 50,
+					bearing: -10,
+				},
+				mobileCenter: {
+					center: [121.536609, 25.044808000000003],
+					zoom: 11,
+					duration: 4000,
+					pitch: 60,
+					bearing: -10,
+				},
+			},
+			mapControls: [
+				{
+					layers: [1, 2],
+					legend: [
+						["lineGradient", "#fd7900", "#47d3d9"],
+						["circle", "white"],
+					],
+				},
+			],
+		},
+		{
+			index: "dongmen-runout",
+			threed: {
+				coordinates: [121.52921121866285, 25.033807497981314],
+				rotation: { x: 90, y: 176.5, z: 0 },
+				adjustment: { x: 0, y: 0.5, z: 0 },
+				scale: 2,
+			},
+			mapConfig: {
+				center: {
+					center: [121.52924799608053, 25.033582119375055],
+					zoom: 19.94770203247537,
+					duration: 4000,
+					pitch: 79.49999999999997,
+					bearing: -102.39999999999992,
+				},
+				mobileCenter: {
+					center: [121.52996788080645, 25.033683464432847],
+					zoom: 19.879940985860358,
+					duration: 4000,
+					pitch: 68.12121996685961,
+					bearing: -93.3720198049345,
+				},
+			},
 		},
 	],
 	weekend: [
 		{
-			index: "management-start",
-			threed: false,
-			mapConfig: false,
-			mapControls: false,
-			images: false,
+			index: "leisure-path",
+			mapConfig: {
+				layers: [
+					{
+						type: "arc",
+						paint: {
+							color: ["#fd7900", "#47d3d9"],
+						},
+					},
+					{
+						type: "circle",
+						paint: {
+							"circle-color": "white",
+						},
+					},
+				],
+				center: {
+					center: [121.51538477043312, 25.058811618829735],
+					zoom: 11.753671549231125,
+					duration: 3000,
+					pitch: 70,
+					bearing: 20,
+				},
+				mobileCenter: {
+					center: [121.536609, 25.044808000000003],
+					zoom: 11,
+					duration: 3000,
+					pitch: 60,
+					bearing: -10,
+				},
+			},
+			mapControls: [
+				{
+					layers: [1, 2],
+					legend: [
+						["lineGradient", "#fd7900", "#47d3d9"],
+						["circle", "white"],
+					],
+				},
+			],
 		},
 	],
 };

@@ -101,6 +101,11 @@ const appStore = useAppStore();
 				background-size: cover;
 				transition: box-shadow 0.3s;
 
+				h2,
+				p {
+					text-shadow: black 1px 1px 8px;
+				}
+
 				p {
 					margin-bottom: 1rem;
 				}
@@ -113,17 +118,17 @@ const appStore = useAppStore();
 
 			.management {
 				grid-area: management;
-				background-image: url('../assets/images/homepage/management.jpg');
+				background-image: url('../assets/images/homepage/management.png');
 			}
 
 			.weekday {
 				grid-area: weekday;
-				background-image: url('../assets/images/homepage/weekday.jpg');
+				background-image: url('../assets/images/homepage/weekday.png');
 			}
 
 			.weekend {
 				grid-area: weekend;
-				background-image: url('../assets/images/homepage/weekend.jpg');
+				background-image: url('../assets/images/homepage/weekend.png');
 			}
 		}
 

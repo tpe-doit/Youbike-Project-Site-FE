@@ -6,6 +6,8 @@ import { useMapStore } from '../../store/mapStore';
 
 import { allTracks } from '../../assets/mapConfigs/allTracks';
 
+const { BASE_URL } = import.meta.env;
+
 const { t } = useI18n();
 const contentStore = useContentStore();
 const mapStore = useMapStore();
@@ -40,10 +42,17 @@ onMounted(() => {
 				<div class="linegradient" :style="{ background: `linear-gradient(-90deg, ${legend[1]}, ${legend[2]})` }">
 				</div>
 			</div>
+			<div v-else-if="legend[0] === 'fill'">
+				<div class="fill" :style="{ backgroundColor: legend[1] }">
+				</div>
+			</div>
 			<div v-else-if="legend[0] === 'circleStacked'">
 				<div class="circlestacked" :style="{ backgroundColor: legend[1] }"></div>
 				<div class="circlestacked circlestacked-2" :style="{ backgroundColor: legend[1] }"></div>
 				<div class="circlestacked circlestacked-3" :style="{ backgroundColor: legend[1] }"></div>
+			</div>
+			<div v-else-if="legend[0] === 'symbol'">
+				<img class="symbol" :src="`${BASE_URL}images/${legend[1]}.png`" />
 			</div>
 			<p>
 				{{ t(`${currentPage.index}.legend-${mapStore.currentMap + 1}-${index + 1}`) }}
@@ -110,6 +119,13 @@ onMounted(() => {
 				border-radius: 2px;
 			}
 
+			.fill {
+				width: 1rem;
+				height: 1rem;
+				border: solid 1px white;
+				border-radius: 2px;
+			}
+
 			.circlestacked {
 				width: 0.3rem;
 				height: 0.3rem;
@@ -126,6 +142,10 @@ onMounted(() => {
 					width: 0.9rem;
 					height: 0.9rem;
 				}
+			}
+
+			.symbol {
+				height: 1.2rem;
 			}
 		}
 

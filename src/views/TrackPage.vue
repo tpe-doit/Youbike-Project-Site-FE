@@ -1,7 +1,9 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useContentStore } from '../store/contentStore';
+import { useAppStore } from '../store/appStore';
+import { useMapStore } from '../store/mapStore';
 
 import HeaderBar from '../components/HeaderBar.vue';
 import AnimationWrapper from '../components/util/AnimationWrapper.vue';
@@ -9,21 +11,28 @@ import PrevNext from '../components/util/PrevNext.vue';
 import ProgressDots from '../components/util/ProgressDots.vue';
 import MultipleChoice from '../components/track/MultipleChoice.vue';
 import MapControlBtns from '../components/track/MapControlBtns.vue';
+import MapLegend from '../components/track/MapLegend.vue';
+import TrackCredits from '../components/track/TrackCredits.vue';
 
 import { allTracks } from '../assets/mapConfigs/allTracks';
-import { useMapStore } from '../store/mapStore';
-import MapLegend from '../components/track/MapLegend.vue';
-import { useAppStore } from '../store/appStore';
+
+const { BASE_URL } = import.meta.env;
 
 const { t } = useI18n();
 const contentStore = useContentStore();
 const mapStore = useMapStore();
 const appStore = useAppStore();
 
+const isTeam = ref(true);
+
 const currentPage = computed(() => {
 	if (!contentStore.currentTrack) return "home";
 	return allTracks[contentStore.currentTrack][contentStore.currentPageIndex];
 });
+
+function toggleCreditCards() {
+	isTeam.value = isTeam.value ? false : true;
+}
 </script>
 
 <template>
@@ -36,6 +45,7 @@ const currentPage = computed(() => {
 					v-if="contentStore.currentTrack && contentStore.contentMode">
 					<PrevNext mode="prev" v-if="contentStore.currentPageIndex > 0" />
 					<MultipleChoice v-if="currentPage.multipleChoice" />
+					<TrackCredits v-else-if="currentPage.index === 'credits'" />
 					<div v-else class="trackpage-main-content">
 						<h2>{{ t(`${currentPage.index}.title`) }}</h2>
 						<p>{{ t(`${currentPage.index}.content`) }}</p>
@@ -66,6 +76,38 @@ const currentPage = computed(() => {
 					<button @click="contentStore.toggleContentMapMode()">{{ contentStore.contentMode ? t('tomapmode') :
 						t('tocontentmode') }}</button>
 				</div>
+			</AnimationWrapper>
+			<AnimationWrapper>
+				<div class="trackpage-image" v-if="currentPage.images">
+					<img :src="`${BASE_URL}images/${currentPage.index}.png`" :alt="t(`${currentPage.index}.image`)" />
+					<h3>{{ t(`${currentPage.index}.image`) }}</h3>
+				</div>
+				<div v-else></div>
+			</AnimationWrapper>
+			<AnimationWrapper>
+				<div class="trackpage-credits" v-if="currentPage.index === 'credits'">
+					<div :class="{ 'trackpage-credits-card': true, flip: !isTeam }">
+						<button v-if="appStore.isNarrowDevice" @click="toggleCreditCards"><span>analytics</span></button>
+						<h3>{{ t('credits.team') }}</h3>
+						<p>{{ t('credits.team-1') }}｜Iima Yu</p>
+						<p>{{ t('credits.team-2') }}｜Jack Huang</p>
+						<p>{{ t('credits.team-3') }}｜Ian Huang</p>
+						<p>{{ t('credits.team-4') }}｜Chu Chen</p>
+						<p>{{ t('credits.team-5') }}｜Igor Ho</p>
+						<p>{{ t('credits.team-6') }}｜Ann Shih</p>
+					</div>
+					<div :class="{ 'trackpage-credits-card': true, flip: isTeam }">
+						<button v-if="appStore.isNarrowDevice" @click="toggleCreditCards"><span>diversity_3</span></button>
+						<h3>{{ t('credits.data') }}</h3>
+						<p>{{ t('credits.data-1') }}</p>
+						<p>{{ t('credits.data-2') }}</p>
+						<p>{{ t('credits.data-3') }}</p>
+						<p>{{ t('credits.data-4') }}</p>
+						<p>{{ t('credits.data-5') }}</p>
+						<p>{{ t('credits.data-6') }}</p>
+					</div>
+				</div>
+				<div v-else></div>
 			</AnimationWrapper>
 		</div>
 	</div>
@@ -103,6 +145,7 @@ const currentPage = computed(() => {
 			}
 
 			i {
+				display: block;
 				color: rgb(205, 205, 205);
 				font-size: var(--font-s);
 			}
@@ -164,6 +207,109 @@ const currentPage = computed(() => {
 			font-size: var(--font-m);
 			color: black;
 			font-weight: 700;
+		}
+	}
+
+	&-image {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 350px;
+		margin-left: 3rem;
+
+		img {
+			width: 100%;
+			border-radius: 10px;
+		}
+
+		h3 {
+			width: 100%;
+			padding: var(--font-s) 0;
+			text-align: center;
+			background-color: white;
+			border-radius: 10px;
+			color: black;
+			box-shadow: var(--color-component-background) 0 -2px 10px;
+			font-weight: 400;
+			transform: translateY(-1rem);
+		}
+
+		@media screen and (max-width: 1000px) {
+			margin-left: 1rem;
+		}
+
+		@media screen and (max-width: 760px) {
+			margin-left: 0rem;
+			margin-bottom: 1rem;
+			flex-direction: column-reverse;
+			width: min(320px, 70%);
+
+			h3 {
+				box-shadow: var(--color-component-background) 0 2px 10px;
+				transform: translateY(1rem);
+			}
+		}
+	}
+
+	&-credits {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		column-gap: var(--font-s);
+		width: 450px;
+		margin-left: 3rem;
+
+		&-card {
+			background-color: var(--color-track-items);
+			border-radius: 10px;
+			padding: var(--font-m);
+			transition: opacity 0.2s, transform 0.5s;
+
+			h3 {
+				font-size: var(--font-l);
+				margin-bottom: 6px;
+			}
+
+			p {
+				font-size: 0.85rem;
+			}
+		}
+
+		@media screen and (max-width: 1000px) {
+			grid-template-columns: 1fr;
+			row-gap: var(--font-s);
+			width: 225px;
+		}
+
+		@media screen and (max-width: 760px) {
+			margin-left: 0;
+			width: min(250px, 80%);
+			display: flex;
+			justify-content: center;
+			position: relative;
+
+			button {
+				position: absolute;
+				right: 1.2rem;
+				top: 1.2rem;
+
+				span {
+					font-size: var(--font-xl);
+				}
+			}
+
+			&-card {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				z-index: 2;
+			}
+
+			.flip {
+				transform: rotateY(180deg);
+				z-index: 1;
+				opacity: 0;
+			}
 		}
 	}
 

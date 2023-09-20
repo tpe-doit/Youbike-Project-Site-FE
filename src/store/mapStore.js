@@ -12,7 +12,9 @@ import {
 	maplayerCommonPaint,
 	maplayerCommonLayout,
 } from "../assets/mapConfigs/mapConfig.js";
-// import { Threebox } from "threebox-plugin";
+import { calculateGradientSteps } from "../assets/mapConfigs/gradient.js";
+import { Threebox } from "threebox-plugin";
+import { useAppStore } from "./appStore.js";
 
 const { BASE_URL } = import.meta.env;
 
@@ -40,24 +42,24 @@ export const useMapStore = defineStore("map", {
 			this.map.on("load", () => {
 				this.initializeBasicLayers();
 			});
-			this.map.on("style.load", () => {
-				this.initialize3dLayer();
-			});
+			// this.map.on("style.load", () => {
+			// 	this.initialize3dLayer();
+			// });
 		},
 		// 2. Adds three basic layers to the map (Taipei District, Taipei Village labels, and Taipei 3D Buildings)
 		// Due to performance concerns, Taipei 3D Buildings won't be added in the mobile version
 		initializeBasicLayers() {
-			const images = [];
+			const images = ["bike_green"];
 			images.forEach((element) => {
 				this.map.loadImage(
-					`${BASE_URL}/images/${element}.png`,
+					`${BASE_URL}images/${element}.png`,
 					(error, image) => {
 						if (error) throw error;
 						this.map.addImage(element, image);
 					}
 				);
 			});
-			fetch(`${BASE_URL}/maps/taipei_town.geojson`)
+			fetch(`${BASE_URL}maps/taipei_town.geojson`)
 				.then((response) => response.json())
 				.then((data) => {
 					this.map
@@ -67,7 +69,7 @@ export const useMapStore = defineStore("map", {
 						})
 						.addLayer(TaipeiTown);
 				});
-			fetch(`${BASE_URL}/maps/taipei_village.geojson`)
+			fetch(`${BASE_URL}maps/taipei_village.geojson`)
 				.then((response) => response.json())
 				.then((data) => {
 					this.map
@@ -90,14 +92,23 @@ export const useMapStore = defineStore("map", {
 			mapConfig.forEach((element, index) => {
 				let mapLayerId = `${pageIndex}-${index + 1}`;
 				axios
-					.get(`${BASE_URL}/maps/${mapLayerId}.geojson`)
+					.get(`${BASE_URL}maps/${mapLayerId}.geojson`)
 					.then((rs) => {
-						this.addMapLayerSource(
-							element,
-							mapLayerId,
-							rs.data,
-							mapControls
-						);
+						if (element.type === "arc") {
+							this.addArcLayer(
+								element,
+								mapLayerId,
+								mapControls,
+								rs.data
+							);
+						} else {
+							this.addMapLayerSource(
+								element,
+								mapLayerId,
+								rs.data,
+								mapControls
+							);
+						}
 					})
 					.catch((e) => console.error(e));
 			});
@@ -161,6 +172,105 @@ export const useMapStore = defineStore("map", {
 				this.map.setLayoutProperty(mapLayerId, "visibility", "none");
 			}
 		},
+		addArcLayer(mapConfig, mapLayerId, mapControls, data) {
+			const appStore = useAppStore();
+			const lines = [...data.features];
+			const arcInterval = 15;
+
+			for (let i = 0; i < lines.length; i++) {
+				let line = [];
+				let lngDif =
+					lines[i].geometry.coordinates[1][0] -
+					lines[i].geometry.coordinates[0][0];
+				let lngInterval = lngDif / arcInterval;
+				let latDif =
+					lines[i].geometry.coordinates[1][1] -
+					lines[i].geometry.coordinates[0][1];
+				let latInterval = latDif / arcInterval;
+
+				let maxElevation =
+					Math.pow(Math.abs(lngDif * latDif), 0.5) * 80000;
+
+				for (let j = 0; j < arcInterval + 1; j++) {
+					let waypointElevation =
+						Math.sin((Math.PI * j) / arcInterval) * maxElevation;
+					line.push([
+						lines[i].geometry.coordinates[0][0] + lngInterval * j,
+						lines[i].geometry.coordinates[0][1] + latInterval * j,
+						waypointElevation,
+					]);
+				}
+
+				lines[i].geometry.coordinates = [...line];
+			}
+
+			const tb = (window.tb = new Threebox(
+				this.map,
+				this.map.getCanvas().getContext("webgl"), //get the context from the map canvas
+				{ defaultLights: true }
+			));
+
+			const delay = appStore.isMobileDevice ? 2000 : 500;
+
+			setTimeout(() => {
+				this.map.addLayer({
+					id: mapLayerId,
+					type: "custom",
+					renderingMode: "3d",
+					onAdd: function () {
+						const gradientSteps = calculateGradientSteps(
+							mapConfig.paint.color[0],
+							mapConfig.paint.color[1],
+							arcInterval + 1
+						);
+						for (let line of lines) {
+							// const geometry = new THREE.BufferGeometry();
+							// let allCoords = [];
+							// line.geometry.coordinates.forEach(
+							// 	(el) => (allCoords = allCoords.concat(el))
+							// );
+							// const vertices = new Float32Array(allCoords);
+							// geometry.addAttribute(
+							// 	"position",
+							// 	new THREE.BufferAttribute(vertices, 3)
+							// );
+							// const colors = new Float32Array(gradientSteps);
+							// geometry.addAttribute(
+							// 	"color",
+							// 	new THREE.BufferAttribute(colors, 3)
+							// );
+
+							let lineOptions = {
+								geometry: line.geometry.coordinates,
+								color: 0xffffff,
+								width: line.properties.Width * 1.5,
+								opacity: 0.5,
+							};
+
+							let lineMesh = tb.line(lineOptions);
+							lineMesh.geometry.setColors(gradientSteps);
+							lineMesh.material.vertexColors = true;
+
+							tb.add(lineMesh);
+						}
+					},
+					render: function () {
+						tb.update(); //update Threebox scene
+					},
+				});
+
+				this.currentLayers.push(mapLayerId);
+				this.currentMap = 0;
+
+				if (!mapControls[0].layers.includes(+mapLayerId.slice(-1))) {
+					this.map.setLayoutProperty(
+						mapLayerId,
+						"visibility",
+						"none"
+					);
+				}
+			}, delay);
+		},
 		switchMap(mapIndex, mapControls, index) {
 			if (mapIndex === this.currentMap) return;
 
@@ -182,36 +292,49 @@ export const useMapStore = defineStore("map", {
 
 			this.currentMap = mapIndex;
 		},
-		initialize3dLayer() {
-			// const tb = (window.tb = new Threebox(
-			// 	this.map,
-			// 	this.map.getCanvas().getContext("webgl"), //get the context from the map canvas
-			// 	{ defaultLights: true }
-			// ));
-			// modelConfig.forEach((el) => {
-			// 	this.map.addLayer({
-			// 		id: el[0],
-			// 		type: "custom",
-			// 		renderingMode: "3d",
-			// 		onAdd: function () {
-			// 			const options = {
-			// 				obj: `${BASE_URL}models/${el[1]}.gltf`,
-			// 				type: "gltf",
-			// 				scale: 3,
-			// 				units: "meters",
-			// 				rotation: { x: 0, y: 0, z: 0 },
-			// 			};
-			// 			tb.loadObj(options, (model) => {
-			// 				model.setCoords(el[2]);
-			// 				model.setRotation({ x: 0, y: 0, z: el[4] });
-			// 				tb.add(model);
-			// 			});
-			// 		},
-			// 		render: function () {
-			// 			tb.update(); //update Threebox scene
-			// 		},
-			// 	});
+		add3dLayer(pageIndex, modelConfig) {
+			const appStore = useAppStore();
+
+			const tb = (window.tb = new Threebox(
+				this.map,
+				this.map.getCanvas().getContext("webgl"), //get the context from the map canvas
+				{ defaultLights: true }
+			));
+
+			const delay = appStore.isMobileDevice ? 2000 : 500;
+
+			// this.map.on("style.load", () => {
+			setTimeout(() => {
+				this.map.addLayer({
+					id: pageIndex,
+					type: "custom",
+					renderingMode: "3d",
+					onAdd: function () {
+						const options = {
+							obj: `${BASE_URL}models/${pageIndex}.gltf`,
+							type: "gltf",
+							scale: modelConfig.scale,
+							units: "meters",
+							anchor: "center",
+							rotation: { x: 0, y: 0, z: 0 },
+							adjustment: modelConfig.adjustment,
+						};
+
+						tb.loadObj(options, (model) => {
+							model.setCoords(modelConfig.coordinates);
+							model.setRotation(modelConfig.rotation);
+							tb.add(model);
+						});
+					},
+					render: function () {
+						tb.update(); //update Threebox scene
+					},
+				});
+			}, delay);
 			// });
+
+			this.currentLayers.push(pageIndex);
+			this.currentMap = 0;
 		},
 		easeToLocation(center) {
 			if (center === "default") {
@@ -237,7 +360,9 @@ export const useMapStore = defineStore("map", {
 			if (this.currentLayers.length === 0) return;
 			this.currentLayers.forEach((element) => {
 				this.map.removeLayer(element);
-				this.map.removeSource(element);
+				if (this.map.getSource(element)) {
+					this.map.removeSource(element);
+				}
 			});
 			this.currentLayers.splice(0, this.currentLayers.length);
 		},

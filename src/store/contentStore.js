@@ -71,6 +71,13 @@ export const useContentStore = defineStore("content", {
 					currentPageConfig.mapControls
 				);
 			}
+
+			if (currentPageConfig.threed) {
+				mapStore.add3dLayer(
+					currentPageConfig.index,
+					currentPageConfig.threed
+				);
+			}
 		},
 		toggleContentMapMode(mode) {
 			if (this.contentMode && this.mapMode) return;
