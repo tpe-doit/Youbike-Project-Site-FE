@@ -468,6 +468,7 @@ export const allTracks = {
 				},
 			},
 		},
+		{ index: "credits", mapConfig: { center: "default" } },
 	],
 	weekend: [
 		{
@@ -512,5 +513,6 @@ export const allTracks = {
 				},
 			],
 		},
+		{ index: "credits", mapConfig: { center: "default" } },
 	],
 };
