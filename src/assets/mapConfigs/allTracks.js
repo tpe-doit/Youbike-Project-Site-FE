@@ -468,6 +468,11 @@ export const allTracks = {
 				},
 			},
 		},
+		{
+			index: "weekday-question",
+			multipleChoice: 4,
+			mapConfig: { center: "default" },
+		},
 		{ index: "credits", mapConfig: { center: "default" } },
 	],
 	weekend: [

@@ -117,6 +117,13 @@ export const ch = {
 		"legend-1-1": "騎乘軌跡起迄",
 		"legend-1-2": "捷運站出口",
 	},
+	"weekday-question": {
+		title: "關於研究內容，是否有你特別感興趣的地方？",
+		"ans-1": "使用者群像分析",
+		"ans-2": "替代站點分析",
+		"ans-3": "閒置量能分析",
+		"ans-4": "其他",
+	},
 	"dongmen-runout": {
 		title: "上班又差點來不及？交通局與微笑單車幫你最後一哩路 ",
 		content:
