@@ -513,6 +513,26 @@ export const allTracks = {
 				},
 			],
 		},
+		{
+			index: "model-explanation",
+			mapConfig: {
+				center: {
+					center: [121.51538477043312, 25.058811618829735],
+					zoom: 11.753671549231125,
+					duration: 3000,
+					pitch: 70,
+					bearing: 20,
+				},
+				mobileCenter: {
+					center: [121.536609, 25.044808000000003],
+					zoom: 11,
+					duration: 3000,
+					pitch: 60,
+					bearing: -10,
+				},
+			},
+			images: true,
+		},
 		{ index: "credits", mapConfig: { center: "default" } },
 	],
 };
