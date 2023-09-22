@@ -447,10 +447,21 @@ export const allTracks = {
 		{
 			index: "green-future",
 			mapConfig: {
-				center: "default",
-				layers: [{ type: "symbol", icon: "youbike" }],
+				center: {
+					center: [121.5608, 25.039083],
+					zoom: 16,
+					duration: 4000,
+					pitch: 79.49999999999997,
+					bearing: 0,
+				},
+				mobileCenter: {
+					center: [121.52999788080645, 25.033683464432847],
+					zoom: 19.879940985860358,
+					duration: 4000,
+					pitch: 68.12121996685961,
+					bearing: -93.3720198049345,
+				},
 			},
-			mapControls: [{ layers: [1], legend: [["symbol", "bike_green"]] }],
 		},
 		{ index: "credits", mapConfig: { center: "default" } },
 	],
