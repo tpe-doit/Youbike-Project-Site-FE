@@ -391,6 +391,60 @@ export const allTracks = {
 			],
 		},
 		{
+			index: "expansion-priority",
+			caption: true,
+			mapConfig: {
+				layers: [
+					{
+						type: "fill",
+						paint: {
+							"fill-color": [
+								"case",
+								["==", ["get", "class"], 1],
+								"#40A461",
+								["==", ["get", "class"], 2],
+								"#7FBF7B",
+								["==", ["get", "class"], 3],
+								"#ACCFFF",
+								["==", ["get", "class"], 4],
+								"#BEBEBE",
+								["==", ["get", "class"], 5],
+								"#BFDAB8",
+								["==", ["get", "class"], 6],
+								"#3D56FF",
+								"#8E8E8E",
+							],
+							"fill-opacity": 0.5,
+							"fill-outline-color": "#555555",
+						},
+					},
+				],
+				center: {
+					center: [121.52586280418996, 25.080435559940524],
+					zoom: 11.753671549231125,
+					duration: 3000,
+					pitch: 0,
+					bearing: 0,
+				},
+				mobileCenter: {
+					center: [121.55586280418996, 25.040435559940524],
+					zoom: 10.6,
+					duration: 3000,
+					pitch: 30,
+					bearing: -10,
+				},
+			},
+			mapControls: [
+				{
+					layers: [1, 2],
+					legend: [
+						["lineGradient", "#5A1846", "#FFC300"],
+						["circle", "#E6BA1B"],
+					],
+				},
+			],
+		},
+		{
 			index: "green-future",
 			mapConfig: {
 				center: "default",
@@ -401,6 +455,26 @@ export const allTracks = {
 		{ index: "credits", mapConfig: { center: "default" } },
 	],
 	weekday: [
+		{
+			index: "weekday-user",
+			mapConfig: {
+				center: {
+					center: [121.51538477043312, 25.058811618829735],
+					zoom: 11.753671549231125,
+					duration: 3000,
+					pitch: 70,
+					bearing: 20,
+				},
+				mobileCenter: {
+					center: [121.536609, 25.044808000000003],
+					zoom: 11,
+					duration: 3000,
+					pitch: 60,
+					bearing: -10,
+				},
+			},
+			images: true,
+		},
 		{
 			index: "commute-path",
 			mapConfig: {
@@ -469,6 +543,103 @@ export const allTracks = {
 			},
 		},
 		{
+			index: "alternative-stations-dongmen",
+			caption: true,
+			mapConfig: {
+				layers: [
+					{
+						type: "circle",
+						paint: {
+							"circle-color": [
+								"case",
+								["<=", ["get", "sum_cor"], 132],
+								"#975506",
+								["<=", ["get", "sum_cor"], 297.67],
+								"#EF7535",
+								["<=", ["get", "sum_cor"], 670.83],
+								"#DCC454",
+								"#F9F9F9",
+							],
+						},
+					},
+					{
+						type: "line",
+						paint: {
+							"line-color": [
+								"case",
+								["<=", ["get", "times"], 3],
+								"#5A1846",
+								["<=", ["get", "times"], 14],
+								"#831A3D",
+								["<=", ["get", "times"], 75],
+								"#E3611C",
+								"#FFC300",
+								// "interpolate",
+								// ["linear"],
+								// ["get", "times"],
+								// 3,
+								// "#5A1846",
+								// 14,
+								// "#831A3D",
+								// 75,
+								// "#E3611C",
+								// 4940,
+								// "#FFC300",
+							],
+						},
+					},
+				],
+				center: {
+					center: [121.529, 25.034098000000003],
+					zoom: 16,
+					duration: 4000,
+					pitch: 0,
+					bearing: 0,
+				},
+				mobileCenter: {
+					center: [121.529, 25.034],
+					zoom: 14.5,
+					duration: 4000,
+					pitch: 0,
+					bearing: 0,
+				},
+			},
+			mapControls: [
+				{
+					layers: [1, 2],
+					legend: [
+						["lineGradient", "#5A1846", "#FFC300"],
+						["circle", "#E6BA1B"],
+					],
+				},
+			],
+		},
+		{
+			index: "longshan-runout",
+			threed: {
+				coordinates: [121.49993199257249, 25.03580773907258],
+				rotation: { x: 90, y: 176.5, z: 0 },
+				adjustment: { x: 0, y: 0.5, z: 0 },
+				scale: 2,
+			},
+			mapConfig: {
+				center: {
+					center: [121.499953, 25.036076],
+					zoom: 19.803514755083652,
+					duration: 500,
+					pitch: 90,
+					bearing: 30,
+				},
+				mobileCenter: {
+					center: [121.49971199257249, 25.035900773907258],
+					zoom: 19.493514755083652,
+					duration: 4000,
+					pitch: 85,
+					bearing: 28.8,
+				},
+			},
+		},
+		{
 			index: "weekday-question",
 			multipleChoice: 4,
 			mapConfig: { center: "default" },
@@ -476,6 +647,26 @@ export const allTracks = {
 		{ index: "credits", mapConfig: { center: "default" } },
 	],
 	weekend: [
+		{
+			index: "weekend-user",
+			mapConfig: {
+				center: {
+					center: [121.51538477043312, 25.058811618829735],
+					zoom: 11.753671549231125,
+					duration: 3000,
+					pitch: 70,
+					bearing: 20,
+				},
+				mobileCenter: {
+					center: [121.536609, 25.044808000000003],
+					zoom: 11,
+					duration: 3000,
+					pitch: 60,
+					bearing: -10,
+				},
+			},
+			images: true,
+		},
 		{
 			index: "leisure-path",
 			mapConfig: {
@@ -537,6 +728,74 @@ export const allTracks = {
 				},
 			},
 			images: true,
+		},
+		{
+			index: "prediction",
+			mapConfig: {
+				center: {
+					center: [121.51538477043312, 25.058811618829735],
+					zoom: 11.753671549231125,
+					duration: 3000,
+					pitch: 70,
+					bearing: 20,
+				},
+				mobileCenter: {
+					center: [121.536609, 25.044808000000003],
+					zoom: 11,
+					duration: 3000,
+					pitch: 60,
+					bearing: -10,
+				},
+			},
+
+			mapControls: [
+				{
+					layers: [1],
+					legend: [
+						["square", "#ca0020"],
+						["circle", "#e4665c"],
+						["circle", "#e97c69"],
+						["circle", "#f4a582"],
+						["circle", "#bababa"],
+						["circle", "#797979"],
+					],
+				},
+				{
+					layers: [2],
+					legend: [
+						["circle", "#ca0020"],
+						["circle", "#e4665c"],
+						["circle", "#e97c69"],
+						["circle", "#f4a582"],
+						["circle", "#bababa"],
+						["circle", "#797979"],
+					],
+				},
+			],
+		},
+		{
+			index: "convenient-isochrone",
+			mapConfig: {
+				center: {
+					center: [121.51538477043312, 25.058811618829735],
+					zoom: 11.753671549231125,
+					duration: 3000,
+					pitch: 70,
+					bearing: 20,
+				},
+				mobileCenter: {
+					center: [121.536609, 25.044808000000003],
+					zoom: 11,
+					duration: 3000,
+					pitch: 60,
+					bearing: -10,
+				},
+			},
+		},
+		{
+			index: "weekend-question",
+			multipleChoice: 4,
+			mapConfig: { center: "default" },
 		},
 		{ index: "credits", mapConfig: { center: "default" } },
 	],
