@@ -63,7 +63,7 @@ const appStore = useAppStore();
 			p {
 				margin: 1rem 0 2rem;
 				text-align: justify;
-				font-size: var(--font-m);
+				font-size: 18px;
 			}
 
 			a {
@@ -139,6 +139,10 @@ const appStore = useAppStore();
 				width: 366px;
 				margin-right: 0;
 				margin-bottom: 2rem;
+
+				p {
+					font-size: var(--font-m);
+				}
 			}
 		}
 

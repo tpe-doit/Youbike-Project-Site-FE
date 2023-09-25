@@ -80,7 +80,7 @@ function toggleCreditCards() {
 			<AnimationWrapper>
 				<div class="trackpage-image" v-if="currentPage.images">
 					<img :src="`${BASE_URL}images/${currentPage.index}.png`" :alt="t(`${currentPage.index}.image`)" />
-					<h3>{{ t(`${currentPage.index}.image`) }}</h3>
+					<h3 v-if="currentPage.images !== 'nocaption'">{{ t(`${currentPage.index}.image`) }}</h3>
 				</div>
 				<div v-else></div>
 			</AnimationWrapper>
@@ -141,7 +141,7 @@ function toggleCreditCards() {
 			p {
 				margin: var(--font-m) 0 var(--font-s);
 				text-align: justify;
-				font-size: var(--font-m);
+				font-size: 18px;
 			}
 
 			i {
@@ -153,6 +153,10 @@ function toggleCreditCards() {
 
 		@media screen and (max-width: 1000px) {
 			width: 350px;
+
+			&-content p {
+				font-size: var(--font-m);
+			}
 		}
 	}
 
