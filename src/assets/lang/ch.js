@@ -23,6 +23,11 @@ export const ch = {
 		weekend: "周末使用",
 		weekenddesc: "從使用情境了解改善作為",
 	},
+	tutorial: {
+		dots: "頁面進度",
+		next: "下一頁",
+		header: "回首頁｜切換語言",
+	},
 	shortage: {
 		title: "到處缺車怎麼解決？針對嚴重站點，五月底優先增車1780台至50站點",
 		content:

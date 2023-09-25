@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 export const useAppStore = defineStore("app", {
 	state: () => ({
 		lang: localStorage.getItem("lang") || "ch",
+		isFirstTime: localStorage.getItem("first") || true,
 		isMobileDevice: false,
 		isNarrowDevice: false,
 		introVideoPage: true,
@@ -27,6 +28,10 @@ export const useAppStore = defineStore("app", {
 		},
 		closeIntroVideoPage() {
 			this.introVideoPage = false;
+		},
+		toggleIsFirstTime() {
+			this.isFirstTime = "not";
+			localStorage.setItem("first", "not");
 		},
 	},
 });

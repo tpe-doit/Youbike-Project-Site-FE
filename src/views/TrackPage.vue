@@ -13,6 +13,7 @@ import MultipleChoice from '../components/track/MultipleChoice.vue';
 import MapControlBtns from '../components/track/MapControlBtns.vue';
 import MapLegend from '../components/track/MapLegend.vue';
 import TrackCredits from '../components/track/TrackCredits.vue';
+import TutorialOverlay from '../components/TutorialOverlay.vue';
 
 import { allTracks } from '../assets/mapConfigs/allTracks';
 
@@ -33,6 +34,31 @@ const currentPage = computed(() => {
 function toggleCreditCards() {
 	isTeam.value = isTeam.value ? false : true;
 }
+
+// function handleSwipeStart(e) {
+// 	if (!appStore.isNarrowDevice || !appStore.isMobileDevice || !canSwipe.value) return;
+// 	swipeX.value = +e.touches.item(0).clientX;
+
+// 	canSwipe.value = false;
+// }
+
+// function handleSwipeEnd(e) {
+// 	if (!appStore.isNarrowDevice || !appStore.isMobileDevice) return;
+// 	if (Math.abs(+e.touches.item(0).clientX - +swipeX.value) < 1) {
+// 		canSwipe.value = true;
+// 		return;
+// 	}
+
+// 	if (+e.touches.item(0).clientX > +swipeX.value && contentStore.currentPageIndex > 0) {
+// 		router.push(`/track/${contentStore.currentTrack}/${contentStore.currentTrackIndexes[contentStore.currentPageIndex - 1]}`);
+// 	} else if (+e.touches.item(0).clientX < +swipeX.value && contentStore.currentPageIndex < contentStore.currentTrackIndexes.length - 1) {
+// 		router.push(`/track/${contentStore.currentTrack}/${contentStore.currentTrackIndexes[contentStore.currentPageIndex + 1]}`);
+// 	}
+
+// 	setTimeout(() => {
+// 		canSwipe.value = true;
+// 	}, 5000);
+// }
 </script>
 
 <template>
@@ -110,6 +136,9 @@ function toggleCreditCards() {
 				<div v-else></div>
 			</AnimationWrapper>
 		</div>
+		<AnimationWrapper>
+			<TutorialOverlay v-if="appStore.isFirstTime !== 'not'" />
+		</AnimationWrapper>
 	</div>
 </template>
 
