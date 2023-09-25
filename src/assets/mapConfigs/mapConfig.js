@@ -231,6 +231,9 @@ export const maplayerCommonPaint = {
 			0.15,
 		],
 	},
+	"fill-border": {
+		"fill-outline-color": "#888",
+	},
 	line: {
 		"line-width": [
 			"interpolate",
