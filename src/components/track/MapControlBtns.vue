@@ -85,6 +85,6 @@ const currentPage = computed(() => {
 }
 
 .index-3 {
-	left: 160px
+	left: 240px
 }
 </style>
