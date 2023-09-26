@@ -99,7 +99,10 @@ function toggleCreditCards() {
 			</AnimationWrapper>
 			<AnimationWrapper>
 				<div class="trackpage-maptoggle" v-if="currentPage.mapControls && appStore.isNarrowDevice">
-					<button @click="contentStore.toggleContentMapMode()">{{ contentStore.contentMode ? t('tomapmode') :
+					<button @click="contentStore.toggleContentMapMode()" :class="{ flip: !contentStore.contentMode }">{{
+						t('tomapmode')
+					}}</button>
+					<button @click="contentStore.toggleContentMapMode()" :class="{ flip: contentStore.contentMode }">{{
 						t('tocontentmode') }}</button>
 				</div>
 			</AnimationWrapper>
@@ -231,15 +234,28 @@ function toggleCreditCards() {
 		position: absolute;
 		top: 1rem;
 		left: 1rem;
-		padding: 2px 4px;
-		z-index: 11;
-		background-color: white;
+		display: flex;
 		border-radius: 10px;
 
 		button {
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: 3px 6px;
+			width: 135px;
+			background-color: white;
+			border-radius: 10px;
 			font-size: var(--font-m);
 			color: black;
 			font-weight: 700;
+			z-index: 11;
+			transition: opacity 0.2s, transform 0.5s;
+		}
+
+		.flip {
+			transform: rotateX(180deg);
+			z-index: 1;
+			opacity: 0;
 		}
 	}
 

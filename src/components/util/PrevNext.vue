@@ -9,14 +9,14 @@ const contentStore = useContentStore();
 <template>
 	<RouterLink v-if="mode === 'prev'"
 		:to="`/track/${contentStore.currentTrack}/${contentStore.currentTrackIndexes[contentStore.currentPageIndex - 1]}`"
-		class="prevnext prev">
+		class="prevnext prev" @click="contentStore.checkAndSubmit">
 		<hr>
 		<span>keyboard_arrow_up</span>
 		<hr>
 	</RouterLink>
 	<RouterLink v-else
 		:to="`/track/${contentStore.currentTrack}/${contentStore.currentTrackIndexes[contentStore.currentPageIndex + 1]}`"
-		class="prevnext next">
+		class="prevnext next" @click="contentStore.checkAndSubmit">
 		<hr>
 		<span>keyboard_arrow_down</span>
 		<hr>

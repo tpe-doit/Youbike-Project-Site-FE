@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useContentStore } from '../../store/contentStore';
 
@@ -7,6 +7,10 @@ const { t } = useI18n();
 const contentStore = useContentStore();
 
 const selected = ref(null);
+
+onMounted(() => {
+	selected.value = contentStore.answers[contentStore.currentPage];
+});
 </script>
 
 <template>
@@ -15,7 +19,8 @@ const selected = ref(null);
 		<div v-for="i in [1, 2, 3, 4]" :key="`${contentStore.currentTrack}-${contentStore.currentPage}-Q${i}`"
 			class="multiplechoice-option">
 			<input type="radio" :value="i" :id="`${contentStore.currentTrack}-${contentStore.currentPage}-Q${i}`"
-				:name="`${contentStore.currentTrack}-${contentStore.currentPage}`" v-model="selected">
+				:name="`${contentStore.currentTrack}-${contentStore.currentPage}`" v-model="selected"
+				@change="contentStore.submitAnswer(contentStore.currentPage, selected)">
 			<label :for="`${contentStore.currentTrack}-${contentStore.currentPage}-Q${i}`">
 				<div class="label">
 					<div class="circle">

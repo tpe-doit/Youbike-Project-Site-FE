@@ -2,13 +2,18 @@
 import { useContentStore } from '../../store/contentStore';
 
 const contentStore = useContentStore();
+
+function handleClick() {
+	contentStore.toggleContentMapMode('content');
+	contentStore.checkAndSubmit();
+}
 </script>
 
 <template>
 	<div class="contentdots">
 		<RouterLink v-for="(dot, index) in contentStore.currentTrackIndexes"
 			:class="{ current: index === contentStore.currentPageIndex }" :key="`${contentStore.currentTrack}-${dot}-dot`"
-			:to="`/track/${contentStore.currentTrack}/${dot}`" @click="contentStore.toggleContentMapMode('content')">
+			:to="`/track/${contentStore.currentTrack}/${dot}`" @click="handleClick">
 		</RouterLink>
 	</div>
 </template>

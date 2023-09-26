@@ -21,7 +21,10 @@ const appStore = useAppStore();
 						<h1>{{ t('homepage.title') }}</h1>
 						<p>{{ t('homepage.content') }}</p>
 					</div>
-					<div class="links"><a>{{ t('homepage.dataset') }}</a><a>{{ t('homepage.explore') }}</a></div>
+					<div class="links">
+						<a>{{ t('homepage.dataset') }}<span>north_east</span></a>
+						<a>{{ t('homepage.explore') }}<span>north_east</span></a>
+					</div>
 				</div>
 				<div class="homepage-container-directory">
 					<RouterLink class="management" to="/track/management">
@@ -66,19 +69,52 @@ const appStore = useAppStore();
 				font-size: 18px;
 			}
 
+			.links {
+				display: flex;
+			}
+
 			a {
-				cursor: pointer;
+				position: relative;
+				display: flex;
+				align-items: center;
+				width: fit-content;
 				margin-right: 0.5rem;
-				padding: 0.25rem 0.75rem;
-				background-color: white;
+				padding: 0.25rem 1.75rem 0.25rem 0.75rem;
+				border: solid white 2px;
 				border-radius: 10px;
-				color: black;
 				font-weight: 700;
 				font-size: var(--font-l);
 				transition: background-color 0.2s;
+				cursor: pointer;
+
+				span {
+					position: absolute;
+					top: 8px;
+					right: 4px;
+					font-family: var(--font-icon);
+					font-size: var(--font-l);
+					transition: top 0.2s, right 0.2s, transform 0.3s 0.25s, opacity 0.2s 0.3s;
+					transition-timing-function: ease;
+				}
+
+				&:last-child {
+					background-color: white;
+					color: black;
+
+					span {
+						color: black;
+					}
+				}
 
 				&:hover {
-					background-color: rgb(210, 210, 210);
+					opacity: 0.7;
+
+					span {
+						top: 12px;
+						right: 8px;
+						transform: translate3d(12px, -12px, 0);
+						opacity: 0;
+					}
 				}
 			}
 		}

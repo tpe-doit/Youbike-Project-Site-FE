@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useAppStore } from '../store/appStore';
 import { useMapStore } from '../store/mapStore';
+import { useContentStore } from '../store/contentStore';
 
 defineProps({
 	isVideo: {
@@ -21,6 +22,7 @@ const { t, locale } = useI18n();
 
 const appStore = useAppStore();
 const mapStore = useMapStore();
+const contentStore = useContentStore();
 
 const isPlaying = ref(true);
 
@@ -43,6 +45,7 @@ function toggleVideoPlayback() {
 }
 
 function returnToHome() {
+	contentStore.checkAndSubmit();
 	mapStore.easeToLocation('default');
 	router.push('/');
 }

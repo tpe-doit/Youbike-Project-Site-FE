@@ -40,7 +40,7 @@ function enterHomePage() {
 				</div>
 			</div>
 			<div :class="{ 'introductionvideo-content-enter': true, entering: entering }">
-				<button @click="enterHomePage">{{ t('introvideo.enter') }}</button>
+				<button @click="enterHomePage">{{ t('introvideo.enter') }}<span>east</span></button>
 				<span>directions_bike</span>
 			</div>
 		</div>
@@ -80,6 +80,7 @@ function enterHomePage() {
 		justify-content: space-between;
 		width: 100%;
 		height: 100%;
+		background-color: rgb(30, 30, 30, 0.7);
 
 		&-title {
 			display: flex;
@@ -181,32 +182,50 @@ function enterHomePage() {
 
 			button {
 				position: relative;
-				width: 130px;
-				height: 51px;
-				padding: 0.5rem 1rem;
-				background-color: white;
+				width: 150px;
+				height: 50px;
+				display: flex;
+				align-items: center;
+				padding: 0.5rem 2rem 0.5rem 1rem;
 				border-radius: 10px;
-				color: black;
+				border: solid 2px white;
 				font-weight: 700;
 				font-size: var(--font-xl);
-				text-wrap: nowrap;
+				text-overflow: nowrap;
 				overflow-x: hidden;
 				z-index: 3;
-				transition: width 0.5s, background-color 0.2s;
+				transition: width 0.2s, background-color 0.2s, border-color 0.2s 0.2s;
+
+				span {
+					position: absolute;
+					right: 8px;
+					font-family: var(--font-icon);
+					font-size: var(--font-l);
+					transition: right 0.2s, transform 0.3s 0.25s, opacity 0.2s 0.3s;
+					transition-timing-function: ease;
+				}
 
 				&:hover {
-					background-color: rgb(210, 210, 210);
+					opacity: 0.7;
+
+					span {
+						right: 12px;
+						transform: translate3d(28px, 0, 0);
+						opacity: 0;
+					}
 				}
 			}
 
-			span {
+			&>span {
 				position: absolute;
 				top: 4px;
 				z-index: 2;
 				font-family: var(--font-icon);
 				font-size: 2.5rem;
-				transition: transform 2.5s;
+				transform: translate3d(-5rem, -5rem, 0);
+				transition: transform 2.5s, opacity 0.2s;
 				transition-delay: 0.7s;
+				opacity: 0;
 			}
 		}
 	}
@@ -216,15 +235,18 @@ function enterHomePage() {
 	button {
 		width: 0;
 		padding: 0;
-		color: white;
+		color: rgb(0, 0, 0, 0);
+		border-color: rgb(0, 0, 0, 0);
 
-		&:hover {
-			color: rgb(210, 210, 210);
+		span {
+			color: rgb(0, 0, 0, 0);
 		}
 	}
 
-	span {
-		transform: translateX(10rem);
+	&>span {
+		opacity: 1;
+		transform: translate3d(5rem, 5rem, 0);
+		rotate: -45deg
 	}
 }
 </style>

@@ -12,6 +12,14 @@ export const useContentStore = defineStore("content", {
 		currentPageIndex: null,
 		contentMode: true,
 		mapMode: true,
+		answers: {
+			"management-question":
+				localStorage.getItem("management-question") || null,
+			"weekday-question":
+				localStorage.getItem("weekday-question") || null,
+			"weekend-question":
+				localStorage.getItem("weekend-question") || null,
+		},
 	}),
 	getters: {},
 	actions: {
@@ -90,6 +98,16 @@ export const useContentStore = defineStore("content", {
 
 			this.contentMode = this.contentMode ? false : true;
 			this.mapMode = this.mapMode ? false : true;
+		},
+		checkAndSubmit() {
+			if (!this.currentPage.includes("question")) {
+				return;
+			}
+			console.log(this.answers);
+		},
+		submitAnswer(question, index) {
+			this.answers[question] = index;
+			localStorage.setItem(question, index);
 		},
 	},
 });

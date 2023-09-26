@@ -729,44 +729,63 @@ export const allTracks = {
 		{
 			index: "prediction",
 			mapConfig: {
+				layers: [
+					{
+						type: "fill",
+						paint: {
+							"fill-color": [
+								"interpolate",
+								["linear"],
+								["get", "Num_Space"],
+								0,
+								"#FFFFCC",
+								80,
+								"#800026",
+							],
+							"fill-opacity": 0.8,
+							"fill-outline-color": "#555555",
+						},
+					},
+					{
+						type: "fill",
+						paint: {
+							"fill-color": [
+								"interpolate",
+								["linear"],
+								["get", "Num_Car"],
+								0,
+								"#FFFFCC",
+								40,
+								"#800026",
+							],
+							"fill-opacity": 0.8,
+							"fill-outline-color": "#555555",
+						},
+					},
+				],
 				center: {
-					center: [121.51538477043312, 25.058811618829735],
+					center: [121.52586280418996, 25.080435559940524],
 					zoom: 11.753671549231125,
 					duration: 3000,
-					pitch: 70,
-					bearing: 20,
+					pitch: 0,
+					bearing: 0,
 				},
 				mobileCenter: {
-					center: [121.536609, 25.044808000000003],
-					zoom: 11,
+					center: [121.55586280418996, 25.040435559940524],
+					zoom: 10.6,
 					duration: 3000,
-					pitch: 60,
+					pitch: 30,
 					bearing: -10,
 				},
 			},
-
 			mapControls: [
 				{
 					layers: [1],
-					legend: [
-						["fill", "#ca0020"],
-						["fill", "#e4665c"],
-						["fill", "#e97c69"],
-						["fill", "#f4a582"],
-						["fill", "#bababa"],
-						["fill", "#797979"],
-					],
+					legend: [["lineGradient", "#800026", "#FFFFCC"]],
 				},
 				{
 					layers: [2],
-					legend: [
-						["fill", "#ca0020"],
-						["fill", "#e4665c"],
-						["fill", "#e97c69"],
-						["fill", "#f4a582"],
-						["fill", "#bababa"],
-						["fill", "#797979"],
-					],
+					legend: [["lineGradient", "#800026", "#FFFFCC"]],
 				},
 			],
 		},
