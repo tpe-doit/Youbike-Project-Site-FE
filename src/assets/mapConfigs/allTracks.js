@@ -540,6 +540,31 @@ export const allTracks = {
 			},
 		},
 		{
+			index: "dongmen-full",
+			threed: {
+				coordinates: [121.52921121866285, 25.033807497981314],
+				rotation: { x: 90, y: 176.5, z: 0 },
+				adjustment: { x: 0, y: 0.5, z: 0 },
+				scale: 2,
+			},
+			mapConfig: {
+				center: {
+					center: [121.52924799608053, 25.033582119375055],
+					zoom: 19.94770203247537,
+					duration: 4000,
+					pitch: 79.49999999999997,
+					bearing: -102.39999999999992,
+				},
+				mobileCenter: {
+					center: [121.52996788080645, 25.033683464432847],
+					zoom: 19.879940985860358,
+					duration: 4000,
+					pitch: 68.12121996685961,
+					bearing: -93.3720198049345,
+				},
+			},
+		},
+		{
 			index: "alternative-stations-dongmen",
 			caption: true,
 			mapConfig: {
@@ -612,27 +637,52 @@ export const allTracks = {
 			],
 		},
 		{
-			index: "longshan-runout",
+			index: "zhoumei-idle",
 			threed: {
-				coordinates: [121.49993199257249, 25.03580773907258],
-				rotation: { x: 90, y: 176.5, z: 0 },
-				adjustment: { x: 0, y: 0.5, z: 0 },
+				coordinates: [121.506443, 25.100458],
+				rotation: { x: 90, y: 180, z: 0 },
+				adjustment: { x: 0, y: 0.45, z: 0 },
 				scale: 2,
 			},
 			mapConfig: {
 				center: {
-					center: [121.499953, 25.036076],
-					zoom: 19.803514755083652,
+					center: [121.505443, 25.100458],
+					zoom: 19.3,
 					duration: 4000,
 					pitch: 90,
-					bearing: 30,
+					bearing: -75,
 				},
 				mobileCenter: {
-					center: [121.49971199257249, 25.035900773907258],
-					zoom: 19.493514755083652,
+					center: [121.505443, 25.100458],
+					zoom: 20,
 					duration: 4000,
-					pitch: 85,
-					bearing: 28.8,
+					pitch: 90,
+					bearing: -90,
+				},
+			},
+		},
+		{
+			index: "zhoumei-optimized",
+			threed: {
+				coordinates: [121.506443, 25.100458],
+				rotation: { x: 90, y: 180, z: 0 },
+				adjustment: { x: 0, y: 0.45, z: 0 },
+				scale: 2,
+			},
+			mapConfig: {
+				center: {
+					center: [121.505443, 25.100458],
+					zoom: 19.3,
+					duration: 4000,
+					pitch: 90,
+					bearing: -75,
+				},
+				mobileCenter: {
+					center: [121.505443, 25.100458],
+					zoom: 20,
+					duration: 4000,
+					pitch: 90,
+					bearing: -90,
 				},
 			},
 		},
@@ -792,21 +842,32 @@ export const allTracks = {
 		{
 			index: "convenient-isochrone",
 			mapConfig: {
-				center: {
-					center: [121.51538477043312, 25.058811618829735],
-					zoom: 11.753671549231125,
-					duration: 3000,
-					pitch: 70,
-					bearing: 20,
-				},
-				mobileCenter: {
-					center: [121.536609, 25.044808000000003],
-					zoom: 11,
-					duration: 3000,
-					pitch: 60,
-					bearing: -10,
-				},
+				center: "default",
+				layers: [
+					{ type: "fill" },
+					{ type: "fill" },
+					{ type: "fill" },
+					{ type: "fill" },
+				],
 			},
+			mapControls: [
+				{
+					layers: [1],
+					legend: [["lineGradient", "#800026", "#FFFFCC"]],
+				},
+				{
+					layers: [2],
+					legend: [["lineGradient", "#800026", "#FFFFCC"]],
+				},
+				{
+					layers: [3],
+					legend: [["lineGradient", "#800026", "#FFFFCC"]],
+				},
+				{
+					layers: [4],
+					legend: [["lineGradient", "#800026", "#FFFFCC"]],
+				},
+			],
 		},
 		{
 			index: "weekend-question",

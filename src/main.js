@@ -24,6 +24,7 @@ const i18n = createI18n({
 		ch: ch,
 	},
 });
+
 app.use(i18n);
 
 app.mount("#app");

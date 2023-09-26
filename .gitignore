@@ -36,8 +36,10 @@ dist-ssr
 /.firebase
 .firebase
 .firebaserc
-firebase.json
+firebase.js
 *.cache
 
 *.tar.gz
 *.sh
+
+src/assets/credentials.json

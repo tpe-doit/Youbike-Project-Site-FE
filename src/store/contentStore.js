@@ -1,8 +1,11 @@
 import { defineStore } from "pinia";
 import router from "../router/index";
+import axios from "axios";
 import { allTracks } from "../assets/mapConfigs/allTracks";
 import { useMapStore } from "./mapStore";
 import { useAppStore } from "./appStore";
+
+// import { getData } from "../firebase";
 
 export const useContentStore = defineStore("content", {
 	state: () => ({
@@ -19,6 +22,14 @@ export const useContentStore = defineStore("content", {
 				localStorage.getItem("weekday-question") || null,
 			"weekend-question":
 				localStorage.getItem("weekend-question") || null,
+		},
+		answersSent: {
+			"management-question":
+				localStorage.getItem("management-question-sent") || false,
+			"weekday-question":
+				localStorage.getItem("weekday-question-sent") || false,
+			"weekend-question":
+				localStorage.getItem("weekend-question-sent") || false,
 		},
 	}),
 	getters: {},
@@ -100,14 +111,21 @@ export const useContentStore = defineStore("content", {
 			this.mapMode = this.mapMode ? false : true;
 		},
 		checkAndSubmit() {
-			if (!this.currentPage.includes("question")) {
-				return;
-			}
-			console.log(this.answers);
+			if (!this.currentPage.includes("question")) return;
+			if (!this.answers[this.currentPage]) return;
+			if (this.answersSent[this.currentPage]) return;
+
+			this.answersSent[this.currentPage] = "sent";
+			localStorage.setItem(`${this.currentPage}-sent`, "sent");
 		},
 		submitAnswer(question, index) {
 			this.answers[question] = index;
 			localStorage.setItem(question, index);
 		},
+		// async fetchData() {
+		// 	const { data, error } = useFirestore();
+
+		// 	console.log(data, error);
+		// },
 	},
 });

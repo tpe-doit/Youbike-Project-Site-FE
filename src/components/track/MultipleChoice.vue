@@ -20,7 +20,7 @@ onMounted(() => {
 			class="multiplechoice-option">
 			<input type="radio" :value="i" :id="`${contentStore.currentTrack}-${contentStore.currentPage}-Q${i}`"
 				:name="`${contentStore.currentTrack}-${contentStore.currentPage}`" v-model="selected"
-				@change="contentStore.submitAnswer(contentStore.currentPage, selected)">
+				@change="contentStore.submitAnswer(contentStore.currentPage, selected)" :disabled="selected">
 			<label :for="`${contentStore.currentTrack}-${contentStore.currentPage}-Q${i}`">
 				<div class="label">
 					<div class="circle">
@@ -95,6 +95,11 @@ onMounted(() => {
 			p {
 				color: var(--color-complement-text)
 			}
+		}
+
+		input:disabled+label .label {
+			opacity: 0.7;
+			cursor: not-allowed;
 		}
 	}
 
