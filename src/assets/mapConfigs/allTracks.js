@@ -488,6 +488,20 @@ export const allTracks = {
 							"circle-color": "white",
 						},
 					},
+					{
+						type: "symbol",
+						layout: {
+							"text-field": ["to-string", ["get", "name"]],
+							"text-size": 16,
+							"text-allow-overlap": true,
+							"text-ignore-placement": true,
+						},
+						paint: {
+							"text-color": "white",
+							"text-halo-color": "#888",
+							"text-halo-width": 5,
+						},
+					},
 				],
 				center: {
 					center: [121.536609, 25.044808000000003],
@@ -506,9 +520,9 @@ export const allTracks = {
 			},
 			mapControls: [
 				{
-					layers: [1, 2],
+					layers: [1, 2, 3],
 					legend: [
-						["lineGradient", "#fd7900", "#47d3d9"],
+						["lineGradient", "#47d3d9", "#fd7900"],
 						["circle", "white"],
 					],
 				},
@@ -730,6 +744,20 @@ export const allTracks = {
 							"circle-color": "white",
 						},
 					},
+					{
+						type: "symbol",
+						layout: {
+							"text-field": ["to-string", ["get", "name"]],
+							"text-size": 16,
+							"text-allow-overlap": true,
+							"text-ignore-placement": true,
+						},
+						paint: {
+							"text-color": "white",
+							"text-halo-color": "#888",
+							"text-halo-width": 5,
+						},
+					},
 				],
 				center: {
 					center: [121.51538477043312, 25.058811618829735],
@@ -748,7 +776,7 @@ export const allTracks = {
 			},
 			mapControls: [
 				{
-					layers: [1, 2],
+					layers: [1, 2, 3],
 					legend: [
 						["lineGradient", "#fd7900", "#47d3d9"],
 						["circle", "white"],

@@ -1,0 +1,77 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+		{
+			"type": "Feature",
+			"properties": { "id": 1, "name": "劍潭" },
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.524602986614397, 25.082914008544144]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": { "id": 2, "name": "芝山" },
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.522674639565565, 25.102936678734256]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": { "id": 3, "name": "中山國中" },
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.544127500483555, 25.061027269540176]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": { "id": 4, "name": "南京三民" },
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.563668083911466, 25.051514090766059]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": { "id": 5, "name": "101" },
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.561611180392717, 25.032841263510104]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": { "id": 6, "name": "劍南" },
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.555376191601567, 25.084006738538456]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": { "id": 7, "name": "古亭" },
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.522407483151511, 25.027028100635899]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": { "id": 8, "name": "象山" },
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.569828750993437, 25.032403368034458]
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": { "id": 9, "name": "臺大" },
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.537834259542009, 25.015803513855978]
+			}
+		}
+	]
+}

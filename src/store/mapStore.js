@@ -162,6 +162,7 @@ export const useMapStore = defineStore("map", {
 				layout: {
 					...maplayerCommonLayout[`${mapConfig.type}`],
 					...extra_layout_configs,
+					...mapConfig.layout,
 				},
 				source: mapLayerId,
 			});
@@ -213,51 +214,54 @@ export const useMapStore = defineStore("map", {
 			const delay = appStore.isMobileDevice ? 2000 : 500;
 
 			setTimeout(() => {
-				this.map.addLayer({
-					id: mapLayerId,
-					type: "custom",
-					renderingMode: "3d",
-					onAdd: function () {
-						const gradientSteps = calculateGradientSteps(
-							mapConfig.paint.color[0],
-							mapConfig.paint.color[1],
-							arcInterval + 1
-						);
-						for (let line of lines) {
-							// const geometry = new THREE.BufferGeometry();
-							// let allCoords = [];
-							// line.geometry.coordinates.forEach(
-							// 	(el) => (allCoords = allCoords.concat(el))
-							// );
-							// const vertices = new Float32Array(allCoords);
-							// geometry.addAttribute(
-							// 	"position",
-							// 	new THREE.BufferAttribute(vertices, 3)
-							// );
-							// const colors = new Float32Array(gradientSteps);
-							// geometry.addAttribute(
-							// 	"color",
-							// 	new THREE.BufferAttribute(colors, 3)
-							// );
+				this.map.addLayer(
+					{
+						id: mapLayerId,
+						type: "custom",
+						renderingMode: "3d",
+						onAdd: function () {
+							const gradientSteps = calculateGradientSteps(
+								mapConfig.paint.color[0],
+								mapConfig.paint.color[1],
+								arcInterval + 1
+							);
+							for (let line of lines) {
+								// const geometry = new THREE.BufferGeometry();
+								// let allCoords = [];
+								// line.geometry.coordinates.forEach(
+								// 	(el) => (allCoords = allCoords.concat(el))
+								// );
+								// const vertices = new Float32Array(allCoords);
+								// geometry.addAttribute(
+								// 	"position",
+								// 	new THREE.BufferAttribute(vertices, 3)
+								// );
+								// const colors = new Float32Array(gradientSteps);
+								// geometry.addAttribute(
+								// 	"color",
+								// 	new THREE.BufferAttribute(colors, 3)
+								// );
 
-							let lineOptions = {
-								geometry: line.geometry.coordinates,
-								color: 0xffffff,
-								width: line.properties.Width * 1.5,
-								opacity: 0.5,
-							};
+								let lineOptions = {
+									geometry: line.geometry.coordinates,
+									color: 0xffffff,
+									width: line.properties.Width * 1.5,
+									opacity: 0.5,
+								};
 
-							let lineMesh = tb.line(lineOptions);
-							lineMesh.geometry.setColors(gradientSteps);
-							lineMesh.material.vertexColors = true;
+								let lineMesh = tb.line(lineOptions);
+								lineMesh.geometry.setColors(gradientSteps);
+								lineMesh.material.vertexColors = true;
 
-							tb.add(lineMesh);
-						}
+								tb.add(lineMesh);
+							}
+						},
+						render: function () {
+							tb.update(); //update Threebox scene
+						},
 					},
-					render: function () {
-						tb.update(); //update Threebox scene
-					},
-				});
+					`${mapLayerId.slice(0, 13)}3`
+				);
 
 				this.currentLayers.push(mapLayerId);
 				this.currentMap = 0;
