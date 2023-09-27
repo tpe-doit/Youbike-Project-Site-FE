@@ -1,0 +1,13 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+		{
+			"type": "Feature",
+			"properties": { "name": "臺北車站" },
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.51745984171001, 25.047827114461246]
+			}
+		}
+	]
+}

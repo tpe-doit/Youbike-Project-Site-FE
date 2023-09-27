@@ -1,0 +1,13 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+		{
+			"type": "Feature",
+			"properties": { "name": "臺北市政府" },
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.56394041472522, 25.037577146355368]
+			}
+		}
+	]
+}

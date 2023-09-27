@@ -49,7 +49,7 @@ export const useMapStore = defineStore("map", {
 		// 2. Adds three basic layers to the map (Taipei District, Taipei Village labels, and Taipei 3D Buildings)
 		// Due to performance concerns, Taipei 3D Buildings won't be added in the mobile version
 		initializeBasicLayers() {
-			const images = ["bike_green"];
+			const images = ["white-pin"];
 			images.forEach((element) => {
 				this.map.loadImage(
 					`${BASE_URL}images/${element}.png`,

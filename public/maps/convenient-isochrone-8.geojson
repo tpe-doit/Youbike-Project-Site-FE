@@ -1,0 +1,13 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+		{
+			"type": "Feature",
+			"properties": { "name": "臺灣大學" },
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.54035261233949, 25.017583533960252]
+			}
+		}
+	]
+}

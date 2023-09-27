@@ -1,0 +1,13 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+		{
+			"type": "Feature",
+			"properties": { "name": "內湖科學園區" },
+			"geometry": {
+				"type": "Point",
+				"coordinates": [121.57485145733513, 25.07754385999715]
+			}
+		}
+	]
+}

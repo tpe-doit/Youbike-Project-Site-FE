@@ -778,7 +778,7 @@ export const allTracks = {
 				{
 					layers: [1, 2, 3],
 					legend: [
-						["lineGradient", "#fd7900", "#47d3d9"],
+						["lineGradient", "#47d3d9", "#fd7900"],
 						["circle", "white"],
 					],
 				},
@@ -891,9 +891,9 @@ export const allTracks = {
 								["linear"],
 								["get", "contour"],
 								15,
-								0.6,
+								0.5,
 								60,
-								0.3,
+								0.25,
 							],
 						},
 					},
@@ -916,9 +916,9 @@ export const allTracks = {
 								["linear"],
 								["get", "contour"],
 								15,
-								0.6,
+								0.5,
 								60,
-								0.2,
+								0.25,
 							],
 						},
 					},
@@ -941,9 +941,9 @@ export const allTracks = {
 								["linear"],
 								["get", "contour"],
 								15,
-								0.6,
+								0.5,
 								60,
-								0.3,
+								0.25,
 							],
 						},
 					},
@@ -966,17 +966,49 @@ export const allTracks = {
 								["linear"],
 								["get", "contour"],
 								15,
-								0.6,
+								0.5,
 								60,
-								0.3,
+								0.25,
 							],
+						},
+					},
+					{
+						type: "symbol",
+						layout: {
+							"icon-image": "white-pin",
+							"icon-size": 1,
+							"icon-anchor": "bottom",
+						},
+					},
+					{
+						type: "symbol",
+						layout: {
+							"icon-image": "white-pin",
+							"icon-size": 1,
+							"icon-anchor": "bottom",
+						},
+					},
+					{
+						type: "symbol",
+						layout: {
+							"icon-image": "white-pin",
+							"icon-size": 1,
+							"icon-anchor": "bottom",
+						},
+					},
+					{
+						type: "symbol",
+						layout: {
+							"icon-image": "white-pin",
+							"icon-size": 1,
+							"icon-anchor": "bottom",
 						},
 					},
 				],
 			},
 			mapControls: [
 				{
-					layers: [1],
+					layers: [1, 5],
 					legend: [
 						["line", "#D94701"],
 						["line", "#FD8D3C"],
@@ -985,7 +1017,7 @@ export const allTracks = {
 					],
 				},
 				{
-					layers: [2],
+					layers: [2, 6],
 					legend: [
 						["line", "#D94701"],
 						["line", "#FD8D3C"],
@@ -994,7 +1026,7 @@ export const allTracks = {
 					],
 				},
 				{
-					layers: [3],
+					layers: [3, 7],
 					legend: [
 						["line", "#D94701"],
 						["line", "#FD8D3C"],
@@ -1003,7 +1035,7 @@ export const allTracks = {
 					],
 				},
 				{
-					layers: [4],
+					layers: [4, 8],
 					legend: [
 						["line", "#D94701"],
 						["line", "#FD8D3C"],
