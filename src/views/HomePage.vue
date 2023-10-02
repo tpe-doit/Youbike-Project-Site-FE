@@ -154,17 +154,17 @@ const appStore = useAppStore();
 
 			.management {
 				grid-area: management;
-				background-image: url('../assets/images/homepage/management.png');
+				background-image: url('../assets/images/homepage/management.jpg');
 			}
 
 			.weekday {
 				grid-area: weekday;
-				background-image: url('../assets/images/homepage/weekday.png');
+				background-image: url('../assets/images/homepage/weekday.jpg');
 			}
 
 			.weekend {
 				grid-area: weekend;
-				background-image: url('../assets/images/homepage/weekend.png');
+				background-image: url('../assets/images/homepage/weekend.jpg');
 			}
 		}
 

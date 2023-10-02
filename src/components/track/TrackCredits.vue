@@ -1,9 +1,7 @@
 <script setup>
 import { useI18n } from 'vue-i18n';
-import { useRoute } from 'vue-router';
 
 const { t } = useI18n();
-const route = useRoute();
 </script>
 
 <template>
@@ -11,7 +9,7 @@ const route = useRoute();
 		<h2>{{ t('credits.title-1') }}</h2>
 		<h2>{{ t('credits.title-2') }}</h2>
 		<div class="trackcredits-cont">
-			<RouterLink class="trackcredits-cont-button" :to="`/track/${route.params.trackindex}`">
+			<RouterLink class="trackcredits-cont-button" :to="`/`">
 				<span>north_east</span>
 				{{ t('credits.btn-1') }}
 			</RouterLink>
