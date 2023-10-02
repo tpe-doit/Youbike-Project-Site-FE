@@ -27,7 +27,7 @@ export const allTracks = {
 								"#797979",
 							],
 						},
-						size: "xl",
+						size: "big",
 						icon: "border",
 					},
 					{
@@ -52,7 +52,7 @@ export const allTracks = {
 							],
 						},
 						icon: "border",
-						size: "xl",
+						size: "big",
 					},
 					{
 						type: "circle",

@@ -43,6 +43,7 @@ const contentStore = useContentStore();
 		font-family: var(--font-icon);
 		color: var(--color-complement-text);
 		transition: color 0.3s;
+		pointer-events: all;
 	}
 
 	&:hover {
@@ -68,6 +69,13 @@ const contentStore = useContentStore();
 	.prevnext {
 		transform: rotate(-90deg);
 
+		span {
+			border-radius: 50%;
+			border: solid 3px var(--color-complement-text);
+			font-size: 1.5rem;
+			animation: flash 3s linear 10;
+		}
+
 		hr {
 			display: none;
 		}
@@ -81,6 +89,33 @@ const contentStore = useContentStore();
 	.next {
 		bottom: auto;
 		right: -1.5rem;
+	}
+}
+
+@keyframes flash {
+	0% {
+		color: var(--color-complement-text);
+		border-color: var(--color-complement-text);
+	}
+
+	30% {
+		color: var(--color-complement-text);
+		border-color: var(--color-complement-text);
+	}
+
+	50% {
+		color: white;
+		border-color: white;
+	}
+
+	70% {
+		color: var(--color-complement-text);
+		border-color: var(--color-complement-text);
+	}
+
+	100% {
+		color: var(--color-complement-text);
+		border-color: var(--color-complement-text);
 	}
 }
 </style>

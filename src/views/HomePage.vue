@@ -28,14 +28,17 @@ const appStore = useAppStore();
 				</div>
 				<div class="homepage-container-directory">
 					<RouterLink class="management" to="/track/management">
+						<div></div>
 						<h2>{{ t('homepage.management') }}</h2>
 						<p>{{ t('homepage.managementdesc') }}</p>
 					</RouterLink>
 					<RouterLink class="weekday" to="/track/weekday">
+						<div></div>
 						<h2>{{ t('homepage.weekday') }}</h2>
 						<p>{{ t('homepage.weekdaydesc') }}</p>
 					</RouterLink>
 					<RouterLink class="weekend" to="/track/weekend">
+						<div></div>
 						<h2>{{ t('homepage.weekend') }}</h2>
 						<p>{{ t('homepage.weekenddesc') }}</p>
 					</RouterLink>
@@ -128,6 +131,7 @@ const appStore = useAppStore();
 			height: 350px;
 
 			a {
+				position: relative;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
@@ -137,13 +141,26 @@ const appStore = useAppStore();
 				background-size: cover;
 				transition: box-shadow 0.3s;
 
+				div {
+					position: absolute;
+					background-color: rgb(0, 0, 0, 0.35);
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					border-radius: 10px;
+				}
+
 				h2,
 				p {
+					position: relative;
 					text-shadow: black 1px 1px 8px;
 				}
 
 				p {
 					margin-bottom: 1rem;
+					font-weight: 700;
+					font-size: 0.85rem;
 				}
 
 				&:hover {
@@ -192,6 +209,10 @@ const appStore = useAppStore();
 			&-directory {
 				grid-template-columns: 150px 150px;
 				height: 300px;
+
+				a p {
+					font-size: 0.8rem;
+				}
 			}
 		}
 	}
