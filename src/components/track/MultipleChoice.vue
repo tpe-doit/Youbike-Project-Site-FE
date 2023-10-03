@@ -8,6 +8,14 @@ const contentStore = useContentStore();
 
 const selected = ref(null);
 
+function handleClick() {
+	// eslint-disable-next-line no-undef
+	gtag('event', contentStore.currentPage, {
+		event_category: 'YouBike Survey',
+		event_label: t(`${contentStore.currentPage}.ans-${selected.value}`),
+	});
+}
+
 onMounted(() => {
 	selected.value = contentStore.answers[contentStore.currentPage];
 });
@@ -20,7 +28,8 @@ onMounted(() => {
 			class="multiplechoice-option">
 			<input type="radio" :value="i" :id="`${contentStore.currentTrack}-${contentStore.currentPage}-Q${i}`"
 				:name="`${contentStore.currentTrack}-${contentStore.currentPage}`" v-model="selected"
-				@change="contentStore.submitAnswer(contentStore.currentPage, selected)" :disabled="selected">
+				@change="contentStore.submitAnswer(contentStore.currentPage, selected)" @click="handleClick"
+				:disabled="selected">
 			<label :for="`${contentStore.currentTrack}-${contentStore.currentPage}-Q${i}`">
 				<div class="label">
 					<div class="circle">
