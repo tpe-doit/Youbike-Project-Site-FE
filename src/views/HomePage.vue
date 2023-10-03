@@ -16,32 +16,34 @@ const appStore = useAppStore();
 		<div class="homepage" v-else>
 			<HeaderBar :is-home="true" />
 			<div class="homepage-container">
-				<div class="homepage-container-desc">
-					<div>
-						<h1>{{ t('homepage.title') }}</h1>
-						<p>{{ t('homepage.content') }}</p>
+				<div class="homepage-container-positioner">
+					<div class="homepage-container-desc">
+						<div>
+							<h1>{{ t('homepage.title') }}</h1>
+							<p>{{ t('homepage.content') }}</p>
+						</div>
+						<div class="links">
+							<a>{{ t('homepage.dataset') }}<span>north_east</span></a>
+							<a>{{ t('homepage.explore') }}<span>north_east</span></a>
+						</div>
 					</div>
-					<div class="links">
-						<a>{{ t('homepage.dataset') }}<span>north_east</span></a>
-						<a>{{ t('homepage.explore') }}<span>north_east</span></a>
+					<div class="homepage-container-directory">
+						<RouterLink class="management" to="/track/management">
+							<div></div>
+							<h2>{{ t('homepage.management') }}</h2>
+							<p>{{ t('homepage.managementdesc') }}</p>
+						</RouterLink>
+						<RouterLink class="weekday" to="/track/weekday">
+							<div></div>
+							<h2>{{ t('homepage.weekday') }}</h2>
+							<p>{{ t('homepage.weekdaydesc') }}</p>
+						</RouterLink>
+						<RouterLink class="weekend" to="/track/weekend">
+							<div></div>
+							<h2>{{ t('homepage.weekend') }}</h2>
+							<p>{{ t('homepage.weekenddesc') }}</p>
+						</RouterLink>
 					</div>
-				</div>
-				<div class="homepage-container-directory">
-					<RouterLink class="management" to="/track/management">
-						<div></div>
-						<h2>{{ t('homepage.management') }}</h2>
-						<p>{{ t('homepage.managementdesc') }}</p>
-					</RouterLink>
-					<RouterLink class="weekday" to="/track/weekday">
-						<div></div>
-						<h2>{{ t('homepage.weekday') }}</h2>
-						<p>{{ t('homepage.weekdaydesc') }}</p>
-					</RouterLink>
-					<RouterLink class="weekend" to="/track/weekend">
-						<div></div>
-						<h2>{{ t('homepage.weekend') }}</h2>
-						<p>{{ t('homepage.weekenddesc') }}</p>
-					</RouterLink>
 				</div>
 			</div>
 		</div>
@@ -61,6 +63,10 @@ const appStore = useAppStore();
 		display: flex;
 		justify-content: center;
 		align-items: center;
+
+		&-positioner {
+			display: flex;
+		}
 
 		&-desc {
 			width: 350px;
@@ -193,7 +199,9 @@ const appStore = useAppStore();
 		}
 
 		@media screen and (max-width: 810px) {
-			flex-direction: column;
+			&-positioner {
+				flex-direction: column;
+			}
 
 			&-desc {
 				width: 366px;
