@@ -21,8 +21,9 @@ function enterHomePage() {
 <template>
 	<div class="introductionvideo">
 		<div class="introductionvideo-video">
-			<video id="introvideo" src="../assets/videos/kv.mp4" autoplay loop preload muted playsinline
-				defaultMuted></video>
+			<video id="introvideo" autoplay loop preload muted playsinline defaultMuted>
+				<source src="../assets/videos/kv.mp4#t=0.5" type="video/mp4" />
+			</video>
 		</div>
 		<div class="introductionvideo-content">
 			<HeaderBar :is-video="true" />

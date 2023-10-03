@@ -66,8 +66,15 @@ const appStore = useAppStore();
 			width: 350px;
 			margin-right: max(5%, 2rem);
 
+			div:first-child {
+				background-color: var(--color-track-items);
+				border-radius: 10px;
+				padding: var(--font-s);
+				margin-bottom: 1rem;
+			}
+
 			p {
-				margin: 1rem 0 2rem;
+				margin: 1rem 0 0;
 				text-align: justify;
 				font-size: 18px;
 			}
@@ -203,16 +210,28 @@ const appStore = useAppStore();
 			flex-direction: column;
 
 			&-desc {
-				width: 316px;
+				width: 324px;
 			}
 
 			&-directory {
-				grid-template-columns: 150px 150px;
+				grid-template-columns: 154px 154px;
 				height: 300px;
 
 				a p {
 					font-size: 0.8rem;
 				}
+			}
+		}
+
+		@media screen and (max-height: 760px) {
+			flex-direction: column;
+
+			&-desc {
+				margin-bottom: 1rem;
+			}
+
+			&-directory {
+				height: 230px;
 			}
 		}
 	}

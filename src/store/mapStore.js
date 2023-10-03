@@ -69,16 +69,16 @@ export const useMapStore = defineStore("map", {
 						})
 						.addLayer(TaipeiTown);
 				});
-			fetch(`${BASE_URL}maps/taipei_village.geojson`)
-				.then((response) => response.json())
-				.then((data) => {
-					this.map
-						.addSource("taipei_village", {
-							type: "geojson",
-							data: data,
-						})
-						.addLayer(TaipeiVillage);
-				});
+			// fetch(`${BASE_URL}maps/taipei_village.geojson`)
+			// 	.then((response) => response.json())
+			// 	.then((data) => {
+			// 		this.map
+			// 			.addSource("taipei_village", {
+			// 				type: "geojson",
+			// 				data: data,
+			// 			})
+			// 			.addLayer(TaipeiVillage);
+			// 	});
 			this.map
 				.addSource("taipei_building_3d_source", {
 					type: "vector",
