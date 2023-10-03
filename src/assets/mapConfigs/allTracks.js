@@ -653,18 +653,18 @@ export const allTracks = {
 		{
 			index: "zhoumei-idle",
 			threed: {
-				coordinates: [121.506443, 25.100458],
-				rotation: { x: 90, y: 180, z: 0 },
-				adjustment: { x: 0, y: 0.45, z: 0 },
+				coordinates: [121.505443, 25.100458],
+				rotation: { x: 90, y: 176.5, z: 0 },
+				adjustment: { x: 0, y: 0.5, z: 0 },
 				scale: 2,
 			},
 			mapConfig: {
 				center: {
-					center: [121.507043, 25.100778],
-					zoom: 20.5,
+					center: [121.505443, 25.100458],
+					zoom: 20,
 					duration: 4000,
-					pitch: 120,
-					bearing: 40,
+					pitch: 90,
+					bearing: -90,
 				},
 				mobileCenter: {
 					center: [121.506543, 25.100258],
