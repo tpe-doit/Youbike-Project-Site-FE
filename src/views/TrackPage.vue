@@ -1,21 +1,21 @@
 <script setup>
-import { computed, ref } from 'vue';
-import { useI18n } from 'vue-i18n';
-import { useContentStore } from '../store/contentStore';
-import { useAppStore } from '../store/appStore';
-import { useMapStore } from '../store/mapStore';
+import { computed, ref } from "vue";
+import { useI18n } from "vue-i18n";
+import { useContentStore } from "../store/contentStore";
+import { useAppStore } from "../store/appStore";
+import { useMapStore } from "../store/mapStore";
 
-import HeaderBar from '../components/HeaderBar.vue';
-import AnimationWrapper from '../components/util/AnimationWrapper.vue';
-import PrevNext from '../components/util/PrevNext.vue';
-import ProgressDots from '../components/util/ProgressDots.vue';
-import MultipleChoice from '../components/track/MultipleChoice.vue';
-import MapControlBtns from '../components/track/MapControlBtns.vue';
-import MapLegend from '../components/track/MapLegend.vue';
-import TrackCredits from '../components/track/TrackCredits.vue';
-import TutorialOverlay from '../components/TutorialOverlay.vue';
+import HeaderBar from "../components/HeaderBar.vue";
+import AnimationWrapper from "../components/util/AnimationWrapper.vue";
+import PrevNext from "../components/util/PrevNext.vue";
+import ProgressDots from "../components/util/ProgressDots.vue";
+import MultipleChoice from "../components/track/MultipleChoice.vue";
+import MapControlBtns from "../components/track/MapControlBtns.vue";
+import MapLegend from "../components/track/MapLegend.vue";
+import TrackCredits from "../components/track/TrackCredits.vue";
+import TutorialOverlay from "../components/TutorialOverlay.vue";
 
-import { allTracks } from '../assets/mapConfigs/allTracks';
+import { allTracks } from "../assets/mapConfigs/allTracks";
 
 const { BASE_URL } = import.meta.env;
 
@@ -67,74 +67,149 @@ function toggleCreditCards() {
 		<div class="trackpage">
 			<ProgressDots />
 			<AnimationWrapper>
-				<div class="trackpage-main" :key="`${contentStore.currentTrack}-${contentStore.currentPage}`"
-					v-if="contentStore.currentTrack && contentStore.contentMode">
-					<PrevNext mode="prev" v-if="contentStore.currentPageIndex > 0" />
+				<div
+					class="trackpage-main"
+					:key="`${contentStore.currentTrack}-${contentStore.currentPage}`"
+					v-if="contentStore.currentTrack && contentStore.contentMode"
+				>
+					<PrevNext
+						mode="prev"
+						v-if="contentStore.currentPageIndex > 0"
+					/>
 					<MultipleChoice v-if="currentPage.multipleChoice" />
 					<TrackCredits v-else-if="currentPage.index === 'credits'" />
 					<div v-else class="trackpage-main-content">
 						<h2>{{ t(`${currentPage.index}.title`) }}</h2>
 						<p>{{ t(`${currentPage.index}.content`) }}</p>
-						<i v-if="currentPage.caption">{{ t(`${currentPage.index}.note`) }}</i>
+						<i v-if="currentPage.caption">{{
+							t(`${currentPage.index}.note`)
+						}}</i>
 					</div>
-					<PrevNext mode="next"
-						v-if="contentStore.currentPageIndex < contentStore.currentTrackIndexes.length - 1" />
+					<PrevNext
+						mode="next"
+						v-if="
+							contentStore.currentPageIndex <
+							contentStore.currentTrackIndexes.length - 1
+						"
+					/>
 				</div>
 			</AnimationWrapper>
 			<AnimationWrapper>
-				<div class="trackpage-mapcontrols" v-if="currentPage.mapControls && contentStore.mapMode">
+				<div
+					class="trackpage-mapcontrols"
+					v-if="currentPage.mapControls && contentStore.mapMode"
+				>
 					<MapControlBtns v-if="currentPage.mapControls.length > 1" />
 					<div class="trackpage-mapcontrols-title">
 						<h3
-							:key="`${contentStore.currentTrack}-${contentStore.currentPage}-map-${mapStore.currentMap + 1}`">
-							{{ t(`${currentPage.index}.map-${mapStore.currentMap + 1}`) }}</h3>
+							:key="`${contentStore.currentTrack}-${
+								contentStore.currentPage
+							}-map-${mapStore.currentMap + 1}`"
+						>
+							{{
+								t(
+									`${currentPage.index}.map-${
+										mapStore.currentMap + 1
+									}`
+								)
+							}}
+						</h3>
 					</div>
 				</div>
 			</AnimationWrapper>
 			<AnimationWrapper>
-				<div class="trackpage-maplegend" v-if="currentPage.mapControls && contentStore.mapMode"
-					:key="`${contentStore.currentTrack}-${contentStore.currentPage}-legend-${mapStore.currentMap + 1}`">
+				<div
+					class="trackpage-maplegend"
+					v-if="currentPage.mapControls && contentStore.mapMode"
+					:key="`${contentStore.currentTrack}-${
+						contentStore.currentPage
+					}-legend-${mapStore.currentMap + 1}`"
+				>
 					<MapLegend />
 				</div>
 			</AnimationWrapper>
 			<AnimationWrapper>
-				<div class="trackpage-maptoggle" v-if="currentPage.mapControls && appStore.isNarrowDevice">
-					<button @click="contentStore.toggleContentMapMode()" :class="{ flip: !contentStore.contentMode }">{{
-						t('tomapmode')
-					}}</button>
-					<button @click="contentStore.toggleContentMapMode()" :class="{ flip: contentStore.contentMode }">{{
-						t('tocontentmode') }}</button>
+				<div
+					class="trackpage-maptoggle"
+					v-if="currentPage.mapControls && appStore.isNarrowDevice"
+				>
+					<button
+						@click="contentStore.toggleContentMapMode()"
+						:class="{ flip: !contentStore.contentMode }"
+					>
+						{{ t("tomapmode") }}
+					</button>
+					<button
+						@click="contentStore.toggleContentMapMode()"
+						:class="{ flip: contentStore.contentMode }"
+					>
+						{{ t("tocontentmode") }}
+					</button>
 				</div>
 			</AnimationWrapper>
 			<AnimationWrapper>
 				<div class="trackpage-image" v-if="currentPage.images">
-					<img :src="`${BASE_URL}images/${currentPage.index}${currentPage.images === 'nocaption' && appStore.lang === 'en' ? '-en' : ''}.png`"
-						:alt="t(`${currentPage.index}.image`)" />
-					<h3 v-if="currentPage.images !== 'nocaption'">{{ t(`${currentPage.index}.image`) }}</h3>
+					<img
+						:src="`${BASE_URL}images/${currentPage.index}${
+							currentPage.images === 'nocaption' &&
+							appStore.lang === 'en'
+								? '-en'
+								: ''
+						}.png`"
+						:alt="t(`${currentPage.index}.image`)"
+					/>
+					<h3 v-if="currentPage.images !== 'nocaption'">
+						{{ t(`${currentPage.index}.image`) }}
+					</h3>
 				</div>
 				<div v-else></div>
 			</AnimationWrapper>
 			<AnimationWrapper>
-				<div class="trackpage-credits" v-if="currentPage.index === 'credits'">
-					<div :class="{ 'trackpage-credits-card': true, flip: !isTeam }">
-						<button v-if="appStore.isNarrowDevice" @click="toggleCreditCards"><span>analytics</span></button>
-						<h3>{{ t('credits.team') }}</h3>
-						<p>{{ t('credits.team-1') }}｜Iima Yu</p>
-						<p>{{ t('credits.team-2') }}｜Jack Huang</p>
-						<p>{{ t('credits.team-3') }}｜Ian Huang</p>
-						<p>{{ t('credits.team-4') }}｜Chu Chen</p>
-						<p>{{ t('credits.team-5') }}｜Igor Ho</p>
-						<p>{{ t('credits.team-6') }}｜Ann Shih</p>
+				<div
+					class="trackpage-credits"
+					v-if="currentPage.index === 'credits'"
+				>
+					<div
+						:class="{
+							'trackpage-credits-card': true,
+							flip: !isTeam,
+						}"
+					>
+						<button
+							v-if="appStore.isNarrowDevice"
+							@click="toggleCreditCards"
+						>
+							<span>analytics</span>
+						</button>
+						<h3>{{ t("credits.team") }}</h3>
+						<p>{{ t("credits.team-1") }}</p>
+						<p>{{ t("credits.team-2") }}</p>
+						<p>{{ t("credits.team-3") }}</p>
+						<p>{{ t("credits.team-4") }}</p>
+						<p>{{ t("credits.team-5") }}</p>
+						<p>{{ t("credits.team-6") }}</p>
+						<p>{{ t("credits.team-7") }}</p>
 					</div>
-					<div :class="{ 'trackpage-credits-card': true, flip: isTeam }">
-						<button v-if="appStore.isNarrowDevice" @click="toggleCreditCards"><span>diversity_3</span></button>
-						<h3>{{ t('credits.data') }}</h3>
-						<p>{{ t('credits.data-1') }}</p>
-						<p>{{ t('credits.data-2') }}</p>
-						<p>{{ t('credits.data-3') }}</p>
-						<p>{{ t('credits.data-4') }}</p>
-						<p>{{ t('credits.data-5') }}</p>
-						<p>{{ t('credits.data-6') }}</p>
+					<div
+						:class="{
+							'trackpage-credits-card': true,
+							flip: isTeam,
+						}"
+					>
+						<button
+							v-if="appStore.isNarrowDevice"
+							@click="toggleCreditCards"
+						>
+							<span>diversity_3</span>
+						</button>
+						<h3>{{ t("credits.data") }}</h3>
+						<p>{{ t("credits.data-1") }}</p>
+						<p>{{ t("credits.data-2") }}</p>
+						<p>{{ t("credits.data-3") }}</p>
+						<p>{{ t("credits.data-4") }}</p>
+						<p>{{ t("credits.data-5") }}</p>
+						<p>{{ t("credits.data-6") }}</p>
+						<p>{{ t("credits.data-7") }}</p>
 					</div>
 				</div>
 				<div v-else></div>

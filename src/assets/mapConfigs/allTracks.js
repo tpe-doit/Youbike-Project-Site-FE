@@ -870,7 +870,13 @@ export const allTracks = {
 		{
 			index: "convenient-isochrone",
 			mapConfig: {
-				center: "default",
+				center: {
+					center: [121.52586280418996, 25.050435559940524],
+					zoom: 11.11,
+					duration: 3000,
+					pitch: 0,
+					bearing: 0,
+				},
 				layers: [
 					{
 						type: "fill",
@@ -1048,7 +1054,15 @@ export const allTracks = {
 		{
 			index: "weekend-question",
 			multipleChoice: 4,
-			mapConfig: { center: "default" },
+			mapConfig: {
+				center: {
+					center: [121.52586280418996, 25.080435559940524],
+					zoom: 11.753671549231125,
+					duration: 3000,
+					pitch: 0,
+					bearing: 0,
+				},
+			},
 		},
 		{ index: "credits", mapConfig: { center: "default" } },
 	],

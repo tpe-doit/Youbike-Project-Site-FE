@@ -8,7 +8,7 @@ export const MapObjectConfig = {
 		[121.6998231749096, 25.21179993640203], // Northeast coordinates
 	],
 	zoom: 12.5,
-	minZoom: 11,
+	minZoom: 6,
 	maxZoom: 22,
 	interactive: false,
 	projection: "globe", // display the map as a 3D globe
