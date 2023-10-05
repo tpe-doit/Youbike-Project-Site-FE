@@ -95,19 +95,23 @@ export const useMapStore = defineStore("map", {
 					.get(`${BASE_URL}maps/${mapLayerId}.geojson`)
 					.then((rs) => {
 						if (element.type === "arc") {
-							this.addArcLayer(
-								element,
-								mapLayerId,
-								mapControls,
-								rs.data
-							);
+							setTimeout(() => {
+								this.addArcLayer(
+									element,
+									mapLayerId,
+									mapControls,
+									rs.data
+								);
+							}, 100 * index);
 						} else {
-							this.addMapLayerSource(
-								element,
-								mapLayerId,
-								rs.data,
-								mapControls
-							);
+							setTimeout(() => {
+								this.addMapLayerSource(
+									element,
+									mapLayerId,
+									rs.data,
+									mapControls
+								);
+							}, 100 * index);
 						}
 					})
 					.catch((e) => console.error(e));
@@ -204,7 +208,6 @@ export const useMapStore = defineStore("map", {
 
 				lines[i].geometry.coordinates = [...line];
 			}
-
 			const tb = (window.tb = new Threebox(
 				this.map,
 				this.map.getCanvas().getContext("webgl"), //get the context from the map canvas
@@ -252,7 +255,6 @@ export const useMapStore = defineStore("map", {
 								let lineMesh = tb.line(lineOptions);
 								lineMesh.geometry.setColors(gradientSteps);
 								lineMesh.material.vertexColors = true;
-
 								tb.add(lineMesh);
 							}
 						},
