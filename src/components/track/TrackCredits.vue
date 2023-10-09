@@ -1,11 +1,13 @@
 <script setup>
 import { useI18n } from 'vue-i18n';
+import { useAppStore } from '../../store/appStore'
 
 const { t } = useI18n();
+const appStore = useAppStore();
 </script>
 
 <template>
-	<div class="trackcredits">
+	<div :class="{trackcredits: true,'lang-en': appStore.lang === 'en' ? true : false}">
 		<h2>{{ t('credits.title-1') }}</h2>
 		<h2>{{ t('credits.title-2') }}</h2>
 		<div class="trackcredits-cont">
@@ -86,6 +88,23 @@ const { t } = useI18n();
 		h2 {
 			font-size: 2rem;
 		}
+	}
+}
+.lang-en {
+	h2 {
+		font-size: 1.75rem;
+	}
+	.trackcredits-cont-button {
+		font-size: 14px;
+	}
+
+	@media screen and (max-width: 1000px) {
+		h2 {
+			font-size: 1.5rem;
+		}
+		.trackcredits-cont-button {
+		font-size: 12px;
+	}
 	}
 }
 </style>

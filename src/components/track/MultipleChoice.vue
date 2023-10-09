@@ -8,7 +8,8 @@ const contentStore = useContentStore();
 
 const selected = ref(null);
 
-function handleClick() {
+function handleChange() {
+	contentStore.submitAnswer(contentStore.currentPage, selected.value)
 	// eslint-disable-next-line no-undef
 	gtag('event', contentStore.currentPage, {
 		event_category: 'YouBike Survey',
@@ -28,8 +29,7 @@ onMounted(() => {
 			class="multiplechoice-option">
 			<input type="radio" :value="i" :id="`${contentStore.currentTrack}-${contentStore.currentPage}-Q${i}`"
 				:name="`${contentStore.currentTrack}-${contentStore.currentPage}`" v-model="selected"
-				@change="contentStore.submitAnswer(contentStore.currentPage, selected)" @click="handleClick"
-				:disabled="selected">
+				@change="handleChange" :disabled="selected">
 			<label :for="`${contentStore.currentTrack}-${contentStore.currentPage}-Q${i}`">
 				<div class="label">
 					<div class="circle">

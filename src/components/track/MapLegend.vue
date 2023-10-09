@@ -3,6 +3,7 @@ import { computed, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useContentStore } from '../../store/contentStore';
 import { useMapStore } from '../../store/mapStore';
+import { useAppStore } from '../../store/appStore'
 
 import { allTracks } from '../../assets/mapConfigs/allTracks';
 
@@ -11,6 +12,7 @@ const { BASE_URL } = import.meta.env;
 const { t } = useI18n();
 const contentStore = useContentStore();
 const mapStore = useMapStore();
+const appStore = useAppStore();
 
 const currentPage = computed(() => {
 	if (!contentStore.currentTrack) return;
@@ -54,7 +56,7 @@ onMounted(() => {
 			<div v-else-if="legend[0] === 'symbol'">
 				<img class="symbol" :src="`${BASE_URL}images/${legend[1]}.png`" />
 			</div>
-			<p>
+			<p :style="{fontSize: appStore.lang === 'en' ? '14px' : '16px'}">
 				{{ t(`${currentPage.index}.legend-${mapStore.currentMap + 1}-${index + 1}`) }}
 			</p>
 		</div>

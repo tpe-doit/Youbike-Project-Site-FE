@@ -19,8 +19,8 @@ const appStore = useAppStore();
 				<div class="homepage-container-positioner">
 					<div class="homepage-container-desc">
 						<div>
-							<h1>{{ t('homepage.title') }}</h1>
-							<p>{{ t('homepage.content') }}</p>
+							<h1 :style="{fontSize: appStore.lang === 'en' ? '20px' : '24px'}">{{ t('homepage.title') }}</h1>
+							<p :style="{fontSize: appStore.lang === 'en' ? '14px': '18px'}">{{ t('homepage.content') }}</p>
 						</div>
 						<div class="links">
 							<a>{{ t('homepage.dataset') }}<span>north_east</span></a>

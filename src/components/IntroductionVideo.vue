@@ -25,7 +25,7 @@ function enterHomePage() {
 				<source src="../assets/videos/kv.mp4#t=0.5" type="video/mp4" />
 			</video>
 		</div>
-		<div class="introductionvideo-content">
+		<div :class="{'introductionvideo-content': true,'lang-en': appStore.lang === 'en' ? true : false}">
 			<HeaderBar :is-video="true" />
 			<div class="introductionvideo-content-title">
 				<div class="main">
@@ -248,6 +248,32 @@ function enterHomePage() {
 		opacity: 1;
 		transform: translate3d(5rem, 5rem, 0);
 		rotate: -45deg
+	}
+}
+.lang-en {
+	.introductionvideo-content-title .main h1 {
+		font-size: 2.5rem;
+	}
+	.introductionvideo-content-title .main h2 {
+		font-size: 1rem;
+	}
+	@media screen and (max-width: 1200px) {
+		.introductionvideo-content-title .main h1 {
+			font-size: 2.1rem;
+		}
+	}
+	@media screen and (max-width: 1000px) {
+		.introductionvideo-content-title .main h1 {
+			font-size: 1.7rem;
+		}	
+	}
+	@media screen and (max-width: 760px) {
+		.introductionvideo-content-title .main h2 {
+			font-size: 0.8rem;
+		}
+		.introductionvideo-content-title .credit h3 {
+			font-size: 0.75rem;
+		}
 	}
 }
 </style>

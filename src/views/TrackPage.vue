@@ -79,8 +79,8 @@ function toggleCreditCards() {
 					<MultipleChoice v-if="currentPage.multipleChoice" />
 					<TrackCredits v-else-if="currentPage.index === 'credits'" />
 					<div v-else class="trackpage-main-content">
-						<h2>{{ t(`${currentPage.index}.title`) }}</h2>
-						<p>{{ t(`${currentPage.index}.content`) }}</p>
+						<h2 :style="{fontSize: appStore.lang === 'en' ? '20px' : '24px'}">{{ t(`${currentPage.index}.title`) }}</h2>
+						<p :style="{fontSize: appStore.lang === 'en' ? '14px': '18px'}">{{ t(`${currentPage.index}.content`) }}</p>
 						<i v-if="currentPage.caption">{{
 							t(`${currentPage.index}.note`)
 						}}</i>
@@ -104,7 +104,7 @@ function toggleCreditCards() {
 						<h3
 							:key="`${contentStore.currentTrack}-${
 								contentStore.currentPage
-							}-map-${mapStore.currentMap + 1}`"
+							}-map-${mapStore.currentMap + 1}`" :style="{fontSize: appStore.lang === 'en' ? '16px' : '20px'}"
 						>
 							{{
 								t(
@@ -264,6 +264,10 @@ function toggleCreditCards() {
 
 			&-content p {
 				font-size: var(--font-m);
+				margin-bottom: 0;
+			}
+			&-content i {
+				margin-top: 0.5rem;
 			}
 		}
 	}

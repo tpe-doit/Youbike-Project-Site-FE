@@ -3,12 +3,14 @@ import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useContentStore } from '../../store/contentStore';
 import { useMapStore } from '../../store/mapStore';
+import {useAppStore} from '../../store/appStore'
 
 import { allTracks } from '../../assets/mapConfigs/allTracks';
 
 const { t } = useI18n();
 const contentStore = useContentStore();
 const mapStore = useMapStore();
+const appStore = useAppStore();
 
 const currentPage = computed(() => {
 	if (!contentStore.currentTrack) return;
@@ -22,6 +24,7 @@ const currentPage = computed(() => {
 		<button :class="{ 'mapcontrolbtns-btn': true, 'btn-focus': mapStore.currentMap === index }"
 			v-for="(control, index) in currentPage.mapControls"
 			:key="`${contentStore.currentTrack}-${contentStore.currentPage}-btn-${index + 1}`"
+			:style="{fontSize: appStore.lang === 'en' ? '14px' : '16px'}"
 			@click="mapStore.switchMap(index, currentPage.mapControls, currentPage.index)">
 			{{ t(`${currentPage.index}.btn-${index + 1}`) }}
 		</button>

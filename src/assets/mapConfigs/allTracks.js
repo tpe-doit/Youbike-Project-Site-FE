@@ -368,7 +368,7 @@ export const allTracks = {
 		},
 		{
 			index: "expansion-priority",
-			caption: true,
+			// caption: true,
 			mapConfig: {
 				layers: [
 					{

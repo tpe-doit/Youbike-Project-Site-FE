@@ -214,7 +214,7 @@ export const useMapStore = defineStore("map", {
 				{ defaultLights: true }
 			));
 
-			const delay = appStore.isMobileDevice ? 2000 : 500;
+			const delay = appStore.isMobileDevice ? 2500 : 750;
 
 			setTimeout(() => {
 				this.map.addLayer(
@@ -307,7 +307,7 @@ export const useMapStore = defineStore("map", {
 				{ defaultLights: true }
 			));
 
-			const delay = appStore.isMobileDevice ? 2000 : 500;
+			const delay = appStore.isMobileDevice ? 2500 : 750;
 
 			// this.map.on("style.load", () => {
 			setTimeout(() => {

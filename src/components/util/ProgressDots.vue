@@ -45,7 +45,7 @@ function handleClick() {
 	@media screen and (max-width: 760px) {
 		flex-direction: row;
 		align-items: center;
-		margin: 1rem 0 3rem;
+		margin: 1rem 0 2rem;
 
 		a {
 			margin: 0 3px;
