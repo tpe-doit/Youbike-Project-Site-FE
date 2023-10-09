@@ -338,7 +338,7 @@ export const allTracks = {
 				],
 				center: {
 					center: [121.52586280418996, 25.080435559940524],
-					zoom: 11.753671549231125,
+					zoom: 11.0,
 					duration: 3000,
 					pitch: 0,
 					bearing: 0,
@@ -448,6 +448,7 @@ export const allTracks = {
 					bearing: -93.3720198049345,
 				},
 			},
+			images: true,
 		},
 		{ index: "credits", mapConfig: { center: "default" } },
 	],
@@ -474,6 +475,7 @@ export const allTracks = {
 		},
 		{
 			index: "commute-path",
+			caption: true,
 			mapConfig: {
 				layers: [
 					{
@@ -555,6 +557,7 @@ export const allTracks = {
 		},
 		{
 			index: "dongmen-full",
+			caption: true,
 			threed: {
 				coordinates: [121.52921121866285, 25.033807497981314],
 				rotation: { x: 90, y: 176.5, z: 0 },

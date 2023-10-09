@@ -27,7 +27,7 @@
 		"@vitejs/plugin-vue": "^4.2.3",
 		"eslint-plugin-vue": "^9.17.0",
 		"sass": "^1.66.1",
-		"vite": "^4.4.5"
+		"vite": "^4.4.11"
 	},
 	"browserslist": [
 		"> 1%",
