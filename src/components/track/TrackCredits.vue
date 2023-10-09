@@ -1,24 +1,39 @@
 <script setup>
-import { useI18n } from 'vue-i18n';
-import { useAppStore } from '../../store/appStore'
+import { useI18n } from "vue-i18n";
+import { useAppStore } from "../../store/appStore";
 
 const { t } = useI18n();
 const appStore = useAppStore();
 </script>
 
 <template>
-	<div :class="{trackcredits: true,'lang-en': appStore.lang === 'en' ? true : false}">
-		<h2>{{ t('credits.title-1') }}</h2>
-		<h2>{{ t('credits.title-2') }}</h2>
+	<div
+		:class="{
+			trackcredits: true,
+			'lang-en': appStore.lang === 'en' ? true : false,
+		}"
+	>
+		<h2>{{ t("credits.title-1") }}</h2>
+		<h2>{{ t("credits.title-2") }}</h2>
 		<div class="trackcredits-cont">
 			<RouterLink class="trackcredits-cont-button" :to="`/`">
 				<span>north_east</span>
-				{{ t('credits.btn-1') }}
+				{{ t("credits.btn-1") }}
 			</RouterLink>
-			<a href="" target="_blank" rel="noreferrer" class="trackcredits-cont-button"><span>north_east</span>{{
-				t('credits.btn-2') }}</a>
-			<a href="" target="_blank" rel="noreferrer" class="trackcredits-cont-button"><span>north_east</span>{{
-				t('credits.btn-3') }}</a>
+			<a
+				href=""
+				target="_blank"
+				rel="noreferrer"
+				class="trackcredits-cont-button"
+				><span>north_east</span>{{ t("credits.btn-2") }}</a
+			>
+			<a
+				href=""
+				target="_blank"
+				rel="noreferrer"
+				class="trackcredits-cont-button"
+				><span>north_east</span>{{ t("credits.btn-3") }}</a
+			>
 		</div>
 	</div>
 </template>
@@ -56,7 +71,8 @@ const appStore = useAppStore();
 				right: 4px;
 				font-family: var(--font-icon);
 				font-size: var(--font-l);
-				transition: top 0.2s, right 0.2s, transform 0.3s 0.25s, opacity 0.2s 0.3s;
+				transition: top 0.2s, right 0.2s, transform 0.3s 0.25s,
+					opacity 0.2s 0.3s;
 				transition-timing-function: ease;
 			}
 
@@ -103,8 +119,8 @@ const appStore = useAppStore();
 			font-size: 1.5rem;
 		}
 		.trackcredits-cont-button {
-		font-size: 12px;
-	}
+			font-size: 12px;
+		}
 	}
 }
 </style>

@@ -802,7 +802,7 @@ export const allTracks = {
 					bearing: -10,
 				},
 			},
-			images: true,
+			images: "nocaption",
 		},
 		{
 			index: "prediction",

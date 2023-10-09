@@ -7,7 +7,7 @@ export const en = {
 		subtitle:
 			"Learn how the city government uses data to optimize and address bike dispatch and station selection issues.",
 		team: "Research Team: Taipei Urban Intelligence Center",
-		partner: "Collaborators: Department of Transportation, YouBike Ltd.",
+		partner: "Collaborators: Dep. of Transportation, YouBike Ltd.",
 		enter: "Explore",
 	},
 	homepage: {
@@ -29,7 +29,7 @@ export const en = {
 		header: "Home｜Languages",
 	},
 	shortage: {
-		title: "How to Solve Bike Shortages? 1,780 Bikes are Added to 50 Critical Stations by the End of May",
+		title: "How to Solve Bike Shortages? 1,780 Bikes were Added to 50 Critical Stations by the End of May",
 		content:
 			"In the past, we couldn't accurately gauge how severe bike shortages were or allocate resources based solely on public feedback. To get a complete picture, we analyzed data from all stations. We first identified stations with critical shortages during peak hours (7-9 AM and 5-7 PM), and then, by the end of May, added 1,780 bikes to those stations. This increased bike availability by an average of about 16%, effectively easing bike shortages.",
 		note: "Bike Availability Rate: Number of hours with more than 1 bike available / 18 hours",
@@ -87,10 +87,10 @@ export const en = {
 		"legend-1-2": "YouBike Stations",
 	},
 	"village-helper": {
-		title: "Recruiting Community Helpers to Assist in Dispatch Tasks",
+		title: "Recruiting Helpers to Assist in Dispatching",
 		content:
 			"Executing the above strategies requires additional manpower. As such, the Department of Transportation is recruiting local community helpers to assist with dispatching. Out of 31 applicants, 17 were chosen, adding more support for future dispatch tasks.",
-		image: "Joint recruitment event, July 21, 2023",
+		image: "Recruitment event, 2023/7/21",
 	},
 	"station-expansion": {
 		title: "Assessing Potential Locations for Station Expansion in 2024",

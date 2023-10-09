@@ -68,7 +68,10 @@ function toggleCreditCards() {
 			<ProgressDots />
 			<AnimationWrapper>
 				<div
-					class="trackpage-main"
+					:class="{
+						'trackpage-main': true,
+						'lang-en': appStore.lang === 'en' ? true : false,
+					}"
 					:key="`${contentStore.currentTrack}-${contentStore.currentPage}`"
 					v-if="contentStore.currentTrack && contentStore.contentMode"
 				>
@@ -79,8 +82,12 @@ function toggleCreditCards() {
 					<MultipleChoice v-if="currentPage.multipleChoice" />
 					<TrackCredits v-else-if="currentPage.index === 'credits'" />
 					<div v-else class="trackpage-main-content">
-						<h2 :style="{fontSize: appStore.lang === 'en' ? '20px' : '24px'}">{{ t(`${currentPage.index}.title`) }}</h2>
-						<p :style="{fontSize: appStore.lang === 'en' ? '14px': '18px'}">{{ t(`${currentPage.index}.content`) }}</p>
+						<h2>
+							{{ t(`${currentPage.index}.title`) }}
+						</h2>
+						<p>
+							{{ t(`${currentPage.index}.content`) }}
+						</p>
 						<i v-if="currentPage.caption">{{
 							t(`${currentPage.index}.note`)
 						}}</i>
@@ -104,7 +111,11 @@ function toggleCreditCards() {
 						<h3
 							:key="`${contentStore.currentTrack}-${
 								contentStore.currentPage
-							}-map-${mapStore.currentMap + 1}`" :style="{fontSize: appStore.lang === 'en' ? '16px' : '20px'}"
+							}-map-${mapStore.currentMap + 1}`"
+							:style="{
+								fontSize:
+									appStore.lang === 'en' ? '16px' : '20px',
+							}"
 						>
 							{{
 								t(
@@ -262,12 +273,15 @@ function toggleCreditCards() {
 		@media screen and (max-width: 1000px) {
 			width: 350px;
 
-			&-content p {
-				font-size: var(--font-m);
-				margin-bottom: 0;
-			}
-			&-content i {
-				margin-top: 0.5rem;
+			&-content {
+				background-color: rgba(106, 106, 106, 0.9);
+				p {
+					font-size: var(--font-m);
+					margin-bottom: 0;
+				}
+				i {
+					margin-top: 0.5rem;
+				}
 			}
 		}
 	}
@@ -372,7 +386,7 @@ function toggleCreditCards() {
 			margin-left: 0rem;
 			margin-bottom: 1rem;
 			flex-direction: column-reverse;
-			width: min(320px, 70%);
+			width: min(310px, calc(85% - 40px));
 
 			h3 {
 				box-shadow: var(--color-component-background) 0 2px 10px;
@@ -440,6 +454,21 @@ function toggleCreditCards() {
 				opacity: 0;
 			}
 		}
+
+		@media screen and (max-height: 660px) {
+			h3 {
+				font-size: 1.1rem;
+			}
+
+			p {
+				font-size: 13px;
+				line-height: 18px;
+			}
+
+			button span {
+				font-size: 1.25rem;
+			}
+		}
 	}
 
 	@media screen and (max-width: 760px) {
@@ -451,6 +480,50 @@ function toggleCreditCards() {
 
 			&-content {
 				margin: 0 var(--font-l);
+
+				h2 {
+					font-size: 1.25rem;
+				}
+
+				p {
+					font-size: 14px;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-height: 660px) {
+		&-main-content {
+			padding: var(--font-m);
+
+			h2 {
+				font-size: 1.1rem;
+			}
+
+			p {
+				font-size: 13px;
+				line-height: 17px;
+			}
+		}
+	}
+}
+.lang-en {
+	.trackpage-main-content h2 {
+		font-size: 1.25rem;
+	}
+	.trackpage-main-content p {
+		font-size: 14px;
+		line-height: 18px;
+	}
+	@media screen and (max-height: 660px) {
+		.trackpage-main-content {
+			h2 {
+				font-size: 1.1rem;
+			}
+
+			p {
+				font-size: 13px;
+				line-height: 17px;
 			}
 		}
 	}

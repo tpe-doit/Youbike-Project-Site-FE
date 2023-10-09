@@ -1,10 +1,10 @@
 <script setup>
-import { useI18n } from 'vue-i18n';
-import { useAppStore } from '../store/appStore';
+import { useI18n } from "vue-i18n";
+import { useAppStore } from "../store/appStore";
 
-import IntroductionVideo from '../components/IntroductionVideo.vue';
-import AnimationWrapper from '../components/util/AnimationWrapper.vue';
-import HeaderBar from '../components/HeaderBar.vue';
+import IntroductionVideo from "../components/IntroductionVideo.vue";
+import AnimationWrapper from "../components/util/AnimationWrapper.vue";
+import HeaderBar from "../components/HeaderBar.vue";
 
 const { t } = useI18n();
 const appStore = useAppStore();
@@ -16,32 +16,47 @@ const appStore = useAppStore();
 		<div class="homepage" v-else>
 			<HeaderBar :is-home="true" />
 			<div class="homepage-container">
-				<div class="homepage-container-positioner">
+				<div
+					:class="{
+						'homepage-container-positioner': true,
+						'lang-en': appStore.lang === 'en' ? true : false,
+					}"
+				>
 					<div class="homepage-container-desc">
 						<div>
-							<h1 :style="{fontSize: appStore.lang === 'en' ? '20px' : '24px'}">{{ t('homepage.title') }}</h1>
-							<p :style="{fontSize: appStore.lang === 'en' ? '14px': '18px'}">{{ t('homepage.content') }}</p>
+							<h1>
+								{{ t("homepage.title") }}
+							</h1>
+							<p>
+								{{ t("homepage.content") }}
+							</p>
 						</div>
 						<div class="links">
-							<a>{{ t('homepage.dataset') }}<span>north_east</span></a>
-							<a>{{ t('homepage.explore') }}<span>north_east</span></a>
+							<a
+								>{{ t("homepage.dataset")
+								}}<span>north_east</span></a
+							>
+							<a
+								>{{ t("homepage.explore")
+								}}<span>north_east</span></a
+							>
 						</div>
 					</div>
 					<div class="homepage-container-directory">
 						<RouterLink class="management" to="/track/management">
 							<div></div>
-							<h2>{{ t('homepage.management') }}</h2>
-							<p>{{ t('homepage.managementdesc') }}</p>
+							<h2>{{ t("homepage.management") }}</h2>
+							<p>{{ t("homepage.managementdesc") }}</p>
 						</RouterLink>
 						<RouterLink class="weekday" to="/track/weekday">
 							<div></div>
-							<h2>{{ t('homepage.weekday') }}</h2>
-							<p>{{ t('homepage.weekdaydesc') }}</p>
+							<h2>{{ t("homepage.weekday") }}</h2>
+							<p>{{ t("homepage.weekdaydesc") }}</p>
 						</RouterLink>
 						<RouterLink class="weekend" to="/track/weekend">
 							<div></div>
-							<h2>{{ t('homepage.weekend') }}</h2>
-							<p>{{ t('homepage.weekenddesc') }}</p>
+							<h2>{{ t("homepage.weekend") }}</h2>
+							<p>{{ t("homepage.weekenddesc") }}</p>
 						</RouterLink>
 					</div>
 				</div>
@@ -52,7 +67,6 @@ const appStore = useAppStore();
 
 <style scoped lang="scss">
 .homepage {
-
 	&-container {
 		position: absolute;
 		top: 0;
@@ -109,7 +123,8 @@ const appStore = useAppStore();
 					right: 4px;
 					font-family: var(--font-icon);
 					font-size: var(--font-l);
-					transition: top 0.2s, right 0.2s, transform 0.3s 0.25s, opacity 0.2s 0.3s;
+					transition: top 0.2s, right 0.2s, transform 0.3s 0.25s,
+						opacity 0.2s 0.3s;
 					transition-timing-function: ease;
 				}
 
@@ -184,17 +199,17 @@ const appStore = useAppStore();
 
 			.management {
 				grid-area: management;
-				background-image: url('../assets/images/homepage/management.jpg');
+				background-image: url("../assets/images/homepage/management.jpg");
 			}
 
 			.weekday {
 				grid-area: weekday;
-				background-image: url('../assets/images/homepage/weekday.jpg');
+				background-image: url("../assets/images/homepage/weekday.jpg");
 			}
 
 			.weekend {
 				grid-area: weekend;
-				background-image: url('../assets/images/homepage/weekend.jpg');
+				background-image: url("../assets/images/homepage/weekend.jpg");
 			}
 		}
 
@@ -211,6 +226,13 @@ const appStore = useAppStore();
 				p {
 					font-size: var(--font-m);
 				}
+
+				.links a {
+					font-size: var(--font-m);
+				}
+				.links span {
+					top: 6px;
+				}
 			}
 		}
 
@@ -219,6 +241,14 @@ const appStore = useAppStore();
 
 			&-desc {
 				width: 324px;
+
+				h1 {
+					font-size: 1.25rem;
+				}
+
+				p {
+					font-size: 14px;
+				}
 			}
 
 			&-directory {
@@ -226,14 +256,15 @@ const appStore = useAppStore();
 				height: 300px;
 
 				a p {
-					font-size: 0.8rem;
+					font-size: 0.75rem;
+				}
+				a h2 {
+					font-size: 1rem;
 				}
 			}
 		}
 
-		@media screen and (max-height: 760px) {
-			flex-direction: column;
-
+		@media screen and (max-height: 700px) {
 			&-desc {
 				margin-bottom: 1rem;
 			}
@@ -242,6 +273,20 @@ const appStore = useAppStore();
 				height: 230px;
 			}
 		}
+		@media screen and (max-height: 660px) {
+			&-directory {
+				height: 170px;
+			}
+		}
+	}
+}
+.lang-en {
+	.homepage-container-desc h1 {
+		font-size: 1.25rem;
+	}
+	.homepage-container-desc p {
+		font-size: 14px;
+		line-height: 18px;
 	}
 }
 </style>
