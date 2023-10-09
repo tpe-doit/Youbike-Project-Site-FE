@@ -115,8 +115,8 @@ export const en = {
 		"map-2": "Predicted Bike Demand in Unstationed Grids",
 		"btn-1": "Docks",
 		"btn-2": "Bikes",
-		"legend-1-1": "Demand (0-80)",
-		"legend-2-1": "Demand (0-50)",
+		"legend-1-1": "Demand (low-high)",
+		"legend-2-1": "Demand (low-high)",
 	},
 	"green-future": {
 		title: "Gradually Realizing Taipei's 2030 Green Transportation Vision",

@@ -540,17 +540,17 @@ export const allTracks = {
 			},
 			mapConfig: {
 				center: {
-					center: [121.52910599608053, 25.033592119375055],
-					zoom: 21,
+					center: [121.52890599608053, 25.033592119375055],
+					zoom: 20,
 					duration: 4000,
 					pitch: 90,
 					bearing: -110,
 				},
 				mobileCenter: {
-					center: [121.52910788080645, 25.033643464432847],
+					center: [121.52930788080645, 25.033703464432847],
 					zoom: 20,
 					duration: 4000,
-					pitch: 90,
+					pitch: 70,
 					bearing: -110,
 				},
 			},
@@ -567,16 +567,16 @@ export const allTracks = {
 			mapConfig: {
 				center: {
 					center: [121.52910599608053, 25.033592119375055],
-					zoom: 20.5,
+					zoom: 20,
 					duration: 4000,
 					pitch: 90,
 					bearing: -110,
 				},
 				mobileCenter: {
-					center: [121.52930788080645, 25.033643464432847],
+					center: [121.52950788080645, 25.033703464432847],
 					zoom: 20,
 					duration: 4000,
-					pitch: 90,
+					pitch: 70,
 					bearing: -110,
 				},
 			},
@@ -664,7 +664,7 @@ export const allTracks = {
 			mapConfig: {
 				center: {
 					center: [121.507043, 25.100778],
-					zoom: 19.8,
+					zoom: 19.6,
 					duration: 4000,
 					pitch: 120,
 					bearing: 40,
@@ -689,7 +689,7 @@ export const allTracks = {
 			mapConfig: {
 				center: {
 					center: [121.507043, 25.100778],
-					zoom: 20.2,
+					zoom: 19.4,
 					duration: 4000,
 					pitch: 120,
 					bearing: 40,
@@ -764,9 +764,9 @@ export const allTracks = {
 				],
 				center: {
 					center: [121.51538477043312, 25.058811618829735],
-					zoom: 11.753671549231125,
+					zoom: 11.3,
 					duration: 3000,
-					pitch: 70,
+					pitch: 60,
 					bearing: 20,
 				},
 				mobileCenter: {
