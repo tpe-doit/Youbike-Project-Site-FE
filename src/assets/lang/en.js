@@ -123,62 +123,53 @@ export const en = {
 		content:
 			"While we can't instantly fix the YouBike shortage, using data analysis helps us understand the problem better and find specific solutions. We're excited about blending data-driven decision-making and open-source collaboration to work towards our 2030 green transportation goal. Thanks for reading. Check out our interactive map and in-depth reports in the next page.",
 	},
-	"green-fsuture": {
-		title: "綠運輸與未來：循證開源逐步落實2030願景",
-		content:
-			"儘管Youbike缺車問題無法馬上解決，但透過數據分析導入決策的流程，相較過往更能掌握全貌並對症下藥。期待結合循證治理與開源精神，讓市政能夠逐步落實2030綠運輸願景。也感謝每位耐心讀完的你，歡迎探索下一頁數據地圖以及開源成果。",
-	},
 	"weekday-user": {
-		title: "Youbike，陪你走過周間通勤的最後一哩路",
+		title: "The Last Mile of Weekday Commutes",
 		content:
-			"周間的通勤日常，總能看到騎著Youbike的身影穿梭在人群中。在每月的使用者中，固定早晚通勤者大約占4%，卻貢獻了22%的使用量。主要的高峰時段為週間上午7-8點，並以路線規律、騎乘距離短為主要特徵。",
-		"map-1": "週末休憩騎乘軌跡",
-		"legend-1-1": "騎乘軌跡起迄",
-		"legend-1-2": "捷運站出口",
+			"During the weekday rush hours, you'll often see YouBike riders navigating through the crowds. About 4% of monthly users are regular commuters during peak times, making up 22% of all rides. 7 to 8 AM on weekdays are typically the busiest, with riders taking similar short trips.",
 	},
 	"commute-path": {
-		title: "周間通勤者群像與騎行起訖點揭密",
-		content:
-			"一座城市的脈動由每天通勤的市民共同組成，是否曾好奇從宏觀的視角看會是什麼樣子？臺北大數據中心視覺化YouBike借還起訖紀錄，帶大家跳脫日常視角的騎車體驗，一窺使用者全貌。（相關地圖可於文末「探索地圖」前往操作）",
-		"map-1": "通勤族騎乘軌跡(5-10點)",
-		"legend-1-1": "騎乘軌跡起迄",
-		"legend-1-2": "捷運站出口",
+		title: "Transaction Data of Weekday Commuters Reveals Common Patterns",
+		content: `A city's pulse is its daily commuters. Ever thought about visualizing this on a larger scale? We cleaned, categorized, and filtered YouBike transaction data, offering a broader view of user behavior. (An interactive map can be accessed in the end. Click on "Dashboard")`,
+		"map-1": "Commuter Ride Patterns (Weekdays 5-10 AM)",
+		"legend-1-1": "Ride Start-End",
+		"legend-1-2": "MRT Stations",
 	},
 	"dongmen-runout": {
-		title: "上班又差點來不及？交通局與微笑單車幫你最後一哩路",
+		title: "Late for Work? Let YouBike Cover Your Last Mile",
 		content:
-			"不小心晚出門了嗎？在路上是不是還擔心著趕不上最後一分鐘？在日常通勤中，偶爾都會遇上這種棘手的狀況。尤其是在高峰時段，大家都急著趕到目的地時，但往往遇到Youbike缺車的情況，讓通勤過程變得更具挑戰性。",
+			"Running late and concerned about the last-minute rush? Daily commuting often comes with this challenge, especially during peak hours. A shortage of YouBikes can make the commute even tougher.",
 	},
 	"dongmen-full": {
-		title: "上班又差點來不及？交通局與微笑單車幫你最後一哩路",
+		title: "Late for Work? Let YouBike Cover Your Last Mile",
 		content:
-			"針對缺車嚴重與民眾反映的50站點，五月底交通局與微笑單車已優先投車1780台，50 站提升 16% 見車率，全市提升 7% 見車率，幫每個晚出門的你及時達陣。",
+			"Since the end of May, YouBike has deployed an additional 1780 bikes to 50 stations with severe bike shortages. This boosted bike availability by 16% at these stations, leading to a 7% improvement citywide. Now, even if you're running late, you can still make it to your destination on time.",
 	},
 	"alternative-stations-dongmen": {
-		title: "這站總是借不到？用數據幫你分析替代站點",
+		title: "No Bikes at This Station? Try an Alternative Station",
 		content:
-			"這站借不到？旁邊也許會借得到。YouBike 2.0站點廣而密，方便使用的同時也讓完美調度更加困難，尤其在使用需求增加但可調度時間固定的情況下更是如此。但透過數據觀察使用者實際借還行為分析替代站點，盡量確保平常願意走過去的替代站中，至少會有一站有車。",
-		note: "站點替代性：用戶在同一時段且夠近的多站之間，有一致的借車或還車行為 ",
-		"map-1": "替代站點分析地圖",
-		"legend-1-1": "交易 (少-多)",
-		"legend-1-2": "Youbike站點",
+			"No bikes at a station? No worries, there's probably one nearby. YouBike 2.0 stations are conveniently close to each other, but this also makes dispatching tricky, especially during high-demand periods. By analyzing transaction data, we pinpointed alternative stations, trying to ensure at least one bike within a cluster.",
+		note: "Alternative Stations: Station pairs where users exhibit consistent bike borrowing or returning behavior.",
+		"map-1": "Alternative Stations Analysis",
+		"legend-1-1": "Transactions (Few to Many)",
+		"legend-1-2": "YouBike Stations",
 	},
 	"zhoumei-idle": {
-		title: "讓每台車都不閒著，發揮最大效用",
+		title: "Maximizing the Usage of Every Bike",
 		content:
-			"下班回家的路上，看著這站幾乎沒車了，另一站卻快停滿了，也許你會疑慮：有人注意到這個情況嗎？其實有的，透過數據分析讓各站閒置過久的車現形，這些車輛都將移至他站使用，滿足大家的騎乘需求。",
+			"On your way back from work, you might see one station nearly empty and another almost full. We are aware of the issue and actively tackling it. We use data analysis to identify bikes sitting idle for too long at stations and move them to other stations in need to make sure there are bikes available for everyone.",
 	},
 	"zhoumei-optimized": {
-		title: "讓每台車都不閒著，發揮最大效用",
+		title: "Maximizing the Usage of Every Bike",
 		content:
-			"臺北大數據中心盤點現有站點使用情況，針對初始在站車數與調度車數給予交通局與微笑單車建議，觀察各站點使用狀況找出閒置備車並建議配置他站，減少閒置量能並優化調度工作。",
+			"We keep track of how stations are used and offer recommendations to YouBike about how many bikes to deploy to each station initially and how to dispatch them throughout the day. We consider how each station is used and identify idle bikes to move to other stations. This helps make dispatching much more efficient.",
 	},
 	"weekday-question": {
-		title: "關於研究內容，是否有你特別感興趣的地方？",
-		"ans-1": "使用者群像分析",
-		"ans-2": "替代站點分析",
-		"ans-3": "閒置量能分析",
-		"ans-4": "其他",
+		title: "Which Area of Our Research Interests You the Most?",
+		"ans-1": "Ride Patterns",
+		"ans-2": "Alternative Stations",
+		"ans-3": "Idle Capacity Analysis",
+		"ans-4": "Other",
 	},
 	"weekend-user": {
 		title: "讓Youbike成為周末休憩的好夥伴",
