@@ -448,7 +448,7 @@ export const allTracks = {
 					bearing: -93.3720198049345,
 				},
 			},
-			images: true,
+			images: "nocaption",
 		},
 		{ index: "credits", mapConfig: { center: "default" } },
 	],
