@@ -7,7 +7,6 @@ import mapStyle from "../assets/mapConfigs/mapStyle.js";
 import {
 	MapObjectConfig,
 	TaipeiTown,
-	TaipeiVillage,
 	TaipeiBuilding,
 	maplayerCommonPaint,
 	maplayerCommonLayout,
@@ -52,14 +51,14 @@ export const useMapStore = defineStore("map", {
 			const images = ["white-pin"];
 			images.forEach((element) => {
 				this.map.loadImage(
-					`${BASE_URL}images/${element}.png`,
+					`${BASE_URL}/images/${element}.png`,
 					(error, image) => {
 						if (error) throw error;
 						this.map.addImage(element, image);
 					}
 				);
 			});
-			fetch(`${BASE_URL}maps/taipei_town.geojson`)
+			fetch(`${BASE_URL}/maps/taipei_town.geojson`)
 				.then((response) => response.json())
 				.then((data) => {
 					this.map
@@ -69,7 +68,7 @@ export const useMapStore = defineStore("map", {
 						})
 						.addLayer(TaipeiTown);
 				});
-			// fetch(`${BASE_URL}maps/taipei_village.geojson`)
+			// fetch(`${BASE_URL}/maps/taipei_village.geojson`)
 			// 	.then((response) => response.json())
 			// 	.then((data) => {
 			// 		this.map
@@ -92,7 +91,7 @@ export const useMapStore = defineStore("map", {
 			mapConfig.forEach((element, index) => {
 				let mapLayerId = `${pageIndex}-${index + 1}`;
 				axios
-					.get(`${BASE_URL}maps/${mapLayerId}.geojson`)
+					.get(`${BASE_URL}/maps/${mapLayerId}.geojson`)
 					.then((rs) => {
 						if (element.type === "arc") {
 							setTimeout(() => {
@@ -317,7 +316,7 @@ export const useMapStore = defineStore("map", {
 					renderingMode: "3d",
 					onAdd: function () {
 						const options = {
-							obj: `${BASE_URL}models/${pageIndex}.gltf`,
+							obj: `${BASE_URL}/models/${pageIndex}.gltf`,
 							type: "gltf",
 							scale: modelConfig.scale,
 							units: "meters",
