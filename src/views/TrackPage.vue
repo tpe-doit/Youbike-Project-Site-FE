@@ -161,7 +161,7 @@ function toggleCreditCards() {
 			<AnimationWrapper>
 				<div class="trackpage-image" v-if="currentPage.images">
 					<img
-						:src="`${BASE_URL}images/${currentPage.index}${
+						:src="`${BASE_URL}/images/${currentPage.index}${
 							currentPage.images === 'nocaption' &&
 							appStore.lang === 'en'
 								? '-en'

@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import router from "../router/index";
-import axios from "axios";
 import { allTracks } from "../assets/mapConfigs/allTracks";
 import { useMapStore } from "./mapStore";
 import { useAppStore } from "./appStore";
