@@ -200,6 +200,7 @@ function toggleCreditCards() {
 						<p>{{ t("credits.team-5") }}</p>
 						<p>{{ t("credits.team-6") }}</p>
 						<p>{{ t("credits.team-7") }}</p>
+						<p>{{ t("credits.team-8") }}</p>
 					</div>
 					<div
 						:class="{
@@ -221,6 +222,7 @@ function toggleCreditCards() {
 						<p>{{ t("credits.data-5") }}</p>
 						<p>{{ t("credits.data-6") }}</p>
 						<p>{{ t("credits.data-7") }}</p>
+						<p>{{ t("credits.data-8") }}</p>
 					</div>
 				</div>
 				<div v-else></div>

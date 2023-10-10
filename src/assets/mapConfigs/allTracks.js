@@ -76,7 +76,7 @@ export const allTracks = {
 				],
 				center: {
 					center: [121.536609, 25.044808],
-					zoom: 12.5,
+					zoom: 11.5,
 					duration: 3000,
 					pitch: 25,
 					bearing: 10,
@@ -434,10 +434,10 @@ export const allTracks = {
 			index: "green-future",
 			mapConfig: {
 				center: {
-					center: [121.5608, 25.039083],
-					zoom: 16,
+					center: [121.5621, 25.045083],
+					zoom: 15.0,
 					duration: 4000,
-					pitch: 79.49999999999997,
+					pitch: 80,
 					bearing: 0,
 				},
 				mobileCenter: {
@@ -763,10 +763,10 @@ export const allTracks = {
 					},
 				],
 				center: {
-					center: [121.51538477043312, 25.058811618829735],
+					center: [121.51338477043312, 25.058811618829735],
 					zoom: 11.3,
 					duration: 3000,
-					pitch: 60,
+					pitch: 65,
 					bearing: 20,
 				},
 				mobileCenter: {

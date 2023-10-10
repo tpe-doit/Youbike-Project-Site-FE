@@ -96,7 +96,7 @@ export const en = {
 		title: "Assessing Potential Locations for Station Expansion in 2024",
 		content:
 			"Beginning in 2024, YouBike plans to steadily grow its fleet and station network, aiming for a total of 26,000 bikes and 2,000 stations. Excluding unsuitable areas like mountains, riverbanks, and areas near existing stations, about 18.6% of Taipei City still needs an evaluation to determine station demand.",
-		note: "Areas near existing stations: Assuming each station can serve people within a 200-meter radius, if more than 50% of an area within a grid overlaps with these serviceable areas, then that grid is considered a non-priority.",
+		note: "Areas near existing stations: Assuming each station can serve people within a 200-meter radius, if more than 50% of an area within a grid overlaps with these serviceable areas, then that grid is considered a Nearby Stations Exist	.",
 		"map-1": "Station Status in Each Grid",
 		"legend-1-1": "Unstationed",
 		"legend-1-2": "Mountainous Restrictions",
@@ -144,6 +144,7 @@ export const en = {
 		title: "Late for Work? Let YouBike Cover Your Last Mile",
 		content:
 			"Since the end of May, YouBike has deployed an additional 1780 bikes to 50 stations with severe bike shortages. This boosted bike availability by 16% at these stations, leading to a 7% improvement citywide. Now, even if you're running late, you can still make it to your destination on time.",
+		note:"Bike Availability Rate: Number of hours with more than 1 bike available / 18 hours"
 	},
 	"alternative-stations-dongmen": {
 		title: "No Bikes at This Station? Try an Alternative Station",
@@ -197,8 +198,8 @@ export const en = {
 		"map-2": "Predicted Bike Demand in Unstationed Grids",
 		"btn-1": "Docks",
 		"btn-2": "Bikes",
-		"legend-1-1": "Demand (0-80)",
-		"legend-2-1": "Demand (0-50)",
+		"legend-1-1": "Demand (Low-High)",
+		"legend-2-1": "Demand (Low-High)",
 	},
 	"convenient-isochrone": {
 		title: "Riding Bikes Might Be More Convenient Than You Thought!",
@@ -250,6 +251,7 @@ export const en = {
 		"team-5": "FE Engineer: Igor Ho",
 		"team-6": "Systems Engineer: Ann Shih",
 		"team-7": "Consultant: Roy Lin",
+		"team-8": "Research: Amy Tseng",
 		data: "Datasets",
 		"data-1": "EasyCard Transactions",
 		"data-2": "Cell Signal Data",
@@ -258,5 +260,6 @@ export const en = {
 		"data-5": "No. of Dispatchers",
 		"data-6": "YouBike Station Data",
 		"data-7": "OpenStreetMap",
+		"data-8": "Land Use Status Data",
 	},
 };
