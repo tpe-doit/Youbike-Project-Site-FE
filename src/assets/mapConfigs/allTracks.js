@@ -733,6 +733,7 @@ export const allTracks = {
 		},
 		{
 			index: "leisure-path",
+			caption: true,
 			mapConfig: {
 				layers: [
 					{

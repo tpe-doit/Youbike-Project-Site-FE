@@ -119,9 +119,9 @@ export const en = {
 		"legend-2-1": "Demand (low-high)",
 	},
 	"green-future": {
-		title: "Gradually Realizing Taipei's 2030 Green Transportation Vision",
+		title: "Realizing Taipei's 2030 Green Transport Vision",
 		content:
-			"While we can't instantly fix the YouBike shortage, using data analysis helps us understand the problem better and find specific solutions. We're excited about blending data-driven decision-making and open-source collaboration to work towards our 2030 green transportation goal. Thanks for reading. Check out our interactive map and in-depth reports in the next page.",
+			"While we can't instantly fix the YouBike shortage, using data analysis helps us understand the problem better and find specific solutions. We're excited about blending data-driven decision-making and open-source collaboration to work towards our 2030 green transportation goal.",
 	},
 	"weekday-user": {
 		title: "The Last Mile of Weekday Commutes",
@@ -131,6 +131,7 @@ export const en = {
 	"commute-path": {
 		title: "Transaction Data of Weekday Commuters Reveals Common Patterns",
 		content: `A city's pulse is its daily commuters. Ever thought about visualizing this on a larger scale? We cleaned, categorized, and filtered YouBike transaction data, offering a broader view of user behavior. (An interactive map can be accessed in the end. Click on "Dashboard")`,
+		note: `Check out our interactive map by clicking the "Dashboard" link at the end of this track.`,
 		"map-1": "Commuter Ride Patterns (Weekdays 5-10 AM)",
 		"legend-1-1": "Ride Start-End",
 		"legend-1-2": "MRT Stations",
@@ -144,7 +145,7 @@ export const en = {
 		title: "Late for Work? Let YouBike Cover Your Last Mile",
 		content:
 			"Since the end of May, YouBike has deployed an additional 1780 bikes to 50 stations with severe bike shortages. This boosted bike availability by 16% at these stations, leading to a 7% improvement citywide. Now, even if you're running late, you can still make it to your destination on time.",
-		note:"Bike Availability Rate: Number of hours with more than 1 bike available / 18 hours"
+		note: "Bike Availability Rate: Number of hours with more than 1 bike available / 18 hours",
 	},
 	"alternative-stations-dongmen": {
 		title: "No Bikes at This Station? Try an Alternative Station",
@@ -167,10 +168,10 @@ export const en = {
 	},
 	"weekday-question": {
 		title: "Which Area of Our Research Interests You the Most?",
-		"ans-1": "Ride Patterns",
-		"ans-2": "Alternative Stations",
-		"ans-3": "Idle Capacity Analysis",
-		"ans-4": "Other",
+		"ans-1": "User Characteristics",
+		"ans-2": "Ride Patterns",
+		"ans-3": "Alternative Stations",
+		"ans-4": "Idle Capacity Analysis",
 	},
 	"weekend-user": {
 		title: "Enjoy a Leisurely Ride With YouBike on Weekends",
@@ -181,6 +182,7 @@ export const en = {
 		title: "Transaction Data of Weekend Riders Reveals Popular Leisure Routes",
 		content:
 			"When we look at transaction data, it's clear that weekend leisure riders love the riverside paths, often starting from Dadaocheng and Guandu and ending in Tamsui. To avoid crowds and also lower the risk of running into bike shortages or full stations, consider taking the reverse route from Tamsui back to Dadaocheng.",
+		note: `Check out our interactive map by clicking the "Dashboard" link at the end of this track.`,
 		"map-1": "Weekend Ride Patterns",
 		"legend-1-1": "Ride Start-End",
 		"legend-1-2": "MRT Stations",
