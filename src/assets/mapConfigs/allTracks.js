@@ -242,24 +242,21 @@ export const allTracks = {
 				{
 					layers: [1, 2],
 					legend: [
-						["line", "#48CBFF"],
-						["lineStacked", "#666"],
+						["lineStacked", "#48CBFF"],
 						["circleStacked", "#666"],
 					],
 				},
 				{
 					layers: [3, 4],
 					legend: [
-						["line", "#2171B5"],
-						["lineStacked", "#666"],
+						["lineStacked", "#2171B5"],
 						["circleStacked", "#666"],
 					],
 				},
 				{
 					layers: [5, 6],
 					legend: [
-						["line", "#FFAB40"],
-						["lineStacked", "#666"],
+						["lineStacked", "#FFAB40"],
 						["circleStacked", "#666"],
 					],
 				},
