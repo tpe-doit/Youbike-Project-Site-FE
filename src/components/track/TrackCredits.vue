@@ -21,14 +21,14 @@ const appStore = useAppStore();
 				{{ t("credits.btn-1") }}
 			</RouterLink>
 			<a
-				href=""
+				href="https://github.com/tpe-doit/YouBike-Optimization"
 				target="_blank"
 				rel="noreferrer"
 				class="trackcredits-cont-button"
 				><span>north_east</span>{{ t("credits.btn-2") }}</a
 			>
 			<a
-				href=""
+				href="https://tuic.gov.taipei/dashboard-demo/dashboard?index=youbike"
 				target="_blank"
 				rel="noreferrer"
 				class="trackcredits-cont-button"

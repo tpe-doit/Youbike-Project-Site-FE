@@ -33,10 +33,16 @@ const appStore = useAppStore();
 						</div>
 						<div class="links">
 							<a
+								href="https://github.com/tpe-doit/YouBike-Optimization"
+								rel="noreferrer"
+								target="_blank"
 								>{{ t("homepage.dataset")
 								}}<span>north_east</span></a
 							>
 							<a
+								href="https://tuic.gov.taipei/dashboard-demo/dashboard?index=youbike"
+								rel="noreferrer"
+								target="_blank"
 								>{{ t("homepage.explore")
 								}}<span>north_east</span></a
 							>
