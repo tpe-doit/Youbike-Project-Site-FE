@@ -270,7 +270,7 @@ const appStore = useAppStore();
 			}
 		}
 
-		@media screen and (max-height: 700px) {
+		@media screen and (max-height: 700px) and (max-width: 810px) {
 			&-desc {
 				margin-bottom: 1rem;
 			}
@@ -279,7 +279,7 @@ const appStore = useAppStore();
 				height: 230px;
 			}
 		}
-		@media screen and (max-height: 660px) {
+		@media screen and (max-height: 660px) and (max-width: 810px) {
 			&-directory {
 				height: 170px;
 			}
