@@ -28,7 +28,7 @@ const appStore = useAppStore();
 				><span>north_east</span>{{ t("credits.btn-2") }}</a
 			>
 			<a
-				href="https://tuic.gov.taipei/dashboard-demo/dashboard?index=youbike"
+				href="https://citydashboard.taipei/dashboard?index=youbike"
 				target="_blank"
 				rel="noreferrer"
 				class="trackcredits-cont-button"
