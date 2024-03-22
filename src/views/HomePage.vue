@@ -40,7 +40,7 @@ const appStore = useAppStore();
 								}}<span>north_east</span></a
 							>
 							<a
-								href="https://tuic.gov.taipei/dashboard-demo/dashboard?index=youbike"
+								href="https://citydashboard.taipei/dashboard?index=youbike"
 								rel="noreferrer"
 								target="_blank"
 								>{{ t("homepage.explore")

@@ -306,7 +306,7 @@ export const useMapStore = defineStore("map", {
 				{ defaultLights: true }
 			));
 
-			const delay = appStore.isMobileDevice ? 2500 : 750;
+			const delay = appStore.isMobileDevice ? 2000 : 500;
 
 			// this.map.on("style.load", () => {
 			setTimeout(() => {
@@ -316,7 +316,7 @@ export const useMapStore = defineStore("map", {
 					renderingMode: "3d",
 					onAdd: function () {
 						const options = {
-							obj: `${BASE_URL}/models/${pageIndex}.gltf`,
+							obj: `${BASE_URL}/models/${pageIndex}.json`,
 							type: "gltf",
 							scale: modelConfig.scale,
 							units: "meters",
